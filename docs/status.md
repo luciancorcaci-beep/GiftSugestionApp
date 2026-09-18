@@ -2,7 +2,7 @@
 
 **Last Updated**: 2026-09-18 00:00
 **Updated By**: DEVOPS
-**Overall Status**: 🔴 BLOCKED
+**Overall Status**: 🟡 READY TO SHIP (with an open, accepted blocker — see Blockers)
 
 ---
 
@@ -33,6 +33,7 @@
 | Epic 3: Curated Gift Catalog | ✅ Done | AIRE_DEV | 2026-09-18 | 3/3 stories done | 2026-09-18 00:00 |
 | DevOps Discovery | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/discovery-report.md` (Vercel target confirmed) | 2026-09-18 00:00 |
 | DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-18 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` | 2026-09-18 00:00 |
+| DevOps Deploy | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/deployment-plan.md`, `runbook-deploy.md`, `runbook-rollback.md`, `runbook-troubleshoot.md`, `architecture.md`, `quick-reference.md` (Vercel-scoped; server/Terraform/SSL phases skipped as inapplicable) | 2026-09-18 00:00 |
 
 ---
 
@@ -332,7 +333,7 @@
 
 | ID | Description | Owner | Opened | Status | Recorded |
 |----|-------------|-------|--------|--------|----------|
-| NEXTJS-CVE | `next@13.5.11` (production dependency) has multiple known high/critical CVEs (unauthenticated RCE on Windows-hosted servers, RCE via AVIF image optimization, SSRF, cache poisoning, auth bypass). Fix requires a 13→16 major upgrade. Blocks production release until resolved; does not block CI/development (`dependency-audit` job is `continue-on-error: true` by explicit user decision, see `docs/deployment/pipeline-secrets.md`). | DEVOPS/DEV | 2026-09-18 | Open | 2026-09-18 00:00 |
+| NEXTJS-CVE | `next@13.5.11` (production dependency) has multiple known high/critical CVEs (unauthenticated RCE on Windows-hosted servers, RCE via AVIF image optimization, SSRF, cache poisoning, auth bypass). Fix requires a 13→16 major upgrade. User has explicitly accepted this risk for now rather than blocking deployment on it (does not block CI/development either — `dependency-audit` job is `continue-on-error: true`, see `docs/deployment/pipeline-secrets.md`). Deployment setup (Vercel) proceeded on that basis; this remains open and should be revisited before a real production launch with real users/traffic. | DEVOPS/DEV | 2026-09-18 | Open (risk accepted) | 2026-09-18 00:00 |
 
 ---
 
@@ -354,5 +355,6 @@
 | QA | Revised test plan for Epic 3 (10 new scenarios, 4 obsolete removed) | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | QA | Full validation complete (Epic 3) — PASS, 0 bugs found | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | DEVOPS | Discovery complete — Vercel target confirmed, git initialized | Standby | 2026-09-18 | 2026-09-18 00:00 |
-| DEVOPS | CI/CD pipeline built; flagged next@13.5.11 production CVEs (NEXTJS-CVE) | Idle | 2026-09-18 | 2026-09-18 00:00 |
+| DEVOPS | CI/CD pipeline built; flagged next@13.5.11 production CVEs (NEXTJS-CVE) | Standby | 2026-09-18 | 2026-09-18 00:00 |
+| DEVOPS | Deploy setup complete — deployment plan, architecture, and Vercel-appropriate runbooks (deploy/rollback/troubleshoot/quick-reference); server/Terraform/SSL phases skipped as inapplicable to Vercel | Idle | 2026-09-18 | 2026-09-18 00:00 |
 
