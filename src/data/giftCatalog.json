@@ -1,0 +1,2695 @@
+[
+  {
+    "giftId": "G001",
+    "name": "Personalized Football Jersey",
+    "description": "Custom jersey printed with the recipient's name and number.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "football",
+      "soccer",
+      "jersey",
+      "team"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$80"
+  },
+  {
+    "giftId": "G002",
+    "name": "Yoga Mat with Carry Strap",
+    "description": "Non-slip mat for home or studio yoga practice.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "yoga",
+      "stretching",
+      "exercise",
+      "fitness"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G003",
+    "name": "Running Shoes (Popular Brand)",
+    "description": "Cushioned running shoes for daily training.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "running",
+      "jogging",
+      "marathon",
+      "shoes"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 65,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$60-$150"
+  },
+  {
+    "giftId": "G004",
+    "name": "Home Gym Resistance Bands Set",
+    "description": "Set of bands for strength training at home.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "workout",
+      "strength",
+      "home gym",
+      "resistance"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G005",
+    "name": "Basketball with Pump",
+    "description": "Official-size basketball with a hand pump included.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "basketball",
+      "hoops",
+      "ball games"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Child"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G006",
+    "name": "Tennis Racket Beginner Set",
+    "description": "Lightweight racket set with balls, ideal for beginners.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "tennis",
+      "racket",
+      "court sports"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G007",
+    "name": "Fitness Tracker Watch",
+    "description": "Tracks steps, heart rate, and sleep automatically.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "fitness",
+      "tracker",
+      "smartwatch",
+      "health"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$50-$200"
+  },
+  {
+    "giftId": "G008",
+    "name": "Golf Balls & Tees Gift Set",
+    "description": "A boxed set of premium golf balls and tees.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "golf",
+      "course",
+      "clubs"
+    ],
+    "minRecipientAge": 25,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague",
+      "Friend"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G009",
+    "name": "Skateboard",
+    "description": "Complete skateboard ready to ride out of the box.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "skateboard",
+      "skating",
+      "street sports"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 25,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$50-$100"
+  },
+  {
+    "giftId": "G010",
+    "name": "Team Sports Fan Cap",
+    "description": "Embroidered cap supporting a favorite sports team.",
+    "interestCategory": "Sports",
+    "keywords": [
+      "fan gear",
+      "cap",
+      "team merchandise"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$25"
+  },
+  {
+    "giftId": "G011",
+    "name": "Massage Gun",
+    "description": "Percussion massager for muscle recovery after workouts.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "massage",
+      "recovery",
+      "muscles",
+      "relax"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$60-$150"
+  },
+  {
+    "giftId": "G012",
+    "name": "Premium Foam Roller",
+    "description": "High-density roller for stretching and myofascial release.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "stretching",
+      "recovery",
+      "fitness"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G013",
+    "name": "Meditation App Subscription (1 year)",
+    "description": "Guided meditations and sleep stories in one app.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "meditation",
+      "mindfulness",
+      "wellness",
+      "relax"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G014",
+    "name": "Weighted Blanket",
+    "description": "Heavier blanket designed to improve sleep quality.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "sleep",
+      "relax",
+      "comfort",
+      "wellness"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G015",
+    "name": "Aromatherapy Diffuser Set",
+    "description": "Essential oil diffuser with a starter scent set.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "aromatherapy",
+      "relax",
+      "home spa"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G016",
+    "name": "Home Spa Gift Basket",
+    "description": "Bath salts, candles, and lotions for a relaxing night in.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "spa",
+      "relax",
+      "self-care",
+      "pampering"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G017",
+    "name": "Standing Desk Converter",
+    "description": "Turns any desk into a sit-stand workstation.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "ergonomics",
+      "office wellness",
+      "posture"
+    ],
+    "minRecipientAge": 22,
+    "maxRecipientAge": 65,
+    "relationshipTags": [
+      "Colleague",
+      "Partner"
+    ],
+    "priceRangeUsd": "$80-$180"
+  },
+  {
+    "giftId": "G018",
+    "name": "Sleep Mask & Earplug Set",
+    "description": "Blackout mask and soft earplugs for better sleep.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "sleep",
+      "travel",
+      "relax"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$25"
+  },
+  {
+    "giftId": "G019",
+    "name": "Smart Body Scale",
+    "description": "Tracks weight, BMI, and body composition via app.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "fitness",
+      "health tracking",
+      "gym"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G020",
+    "name": "Sauna Blanket",
+    "description": "Infrared blanket that simulates a sauna session at home.",
+    "interestCategory": "Fitness & Wellness",
+    "keywords": [
+      "detox",
+      "relax",
+      "wellness",
+      "heat therapy"
+    ],
+    "minRecipientAge": 25,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent"
+    ],
+    "priceRangeUsd": "$80-$150"
+  },
+  {
+    "giftId": "G021",
+    "name": "Bluetooth Portable Speaker",
+    "description": "Compact waterproof speaker for music anywhere.",
+    "interestCategory": "Music",
+    "keywords": [
+      "music",
+      "speaker",
+      "audio",
+      "party"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$80"
+  },
+  {
+    "giftId": "G022",
+    "name": "Noise-Cancelling Headphones",
+    "description": "Over-ear headphones that block out ambient noise.",
+    "interestCategory": "Music",
+    "keywords": [
+      "music",
+      "headphones",
+      "audio",
+      "travel"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$80-$250"
+  },
+  {
+    "giftId": "G023",
+    "name": "Vinyl Record Player",
+    "description": "Retro-style turntable for playing vinyl records.",
+    "interestCategory": "Music",
+    "keywords": [
+      "vinyl",
+      "records",
+      "retro",
+      "audiophile"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Parent"
+    ],
+    "priceRangeUsd": "$80-$200"
+  },
+  {
+    "giftId": "G024",
+    "name": "Beginner Ukulele",
+    "description": "Easy-to-learn instrument with an included tuning app.",
+    "interestCategory": "Music",
+    "keywords": [
+      "ukulele",
+      "instrument",
+      "learn music"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Friend",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G025",
+    "name": "Concert Tickets (Gift Card)",
+    "description": "Gift card redeemable for live concert tickets.",
+    "interestCategory": "Music",
+    "keywords": [
+      "concert",
+      "live music",
+      "tickets"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$50-$150"
+  },
+  {
+    "giftId": "G026",
+    "name": "Engraved Bluetooth Speaker",
+    "description": "Personalized speaker engraved with a name or message.",
+    "interestCategory": "Music",
+    "keywords": [
+      "music",
+      "speaker",
+      "personalized gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G027",
+    "name": "Guitar Strings & Care Kit",
+    "description": "Fresh strings plus polish and tools for guitar upkeep.",
+    "interestCategory": "Music",
+    "keywords": [
+      "guitar",
+      "instrument",
+      "musician"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Child"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G028",
+    "name": "Music Streaming Gift Card",
+    "description": "Credit for a music streaming subscription.",
+    "interestCategory": "Music",
+    "keywords": [
+      "streaming",
+      "playlists",
+      "music"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$100"
+  },
+  {
+    "giftId": "G029",
+    "name": "Karaoke Microphone",
+    "description": "Bluetooth mic with built-in speaker for singing along.",
+    "interestCategory": "Music",
+    "keywords": [
+      "karaoke",
+      "singing",
+      "party"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 50,
+    "relationshipTags": [
+      "Child",
+      "Friend",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G030",
+    "name": "Vintage Band T-Shirt",
+    "description": "Graphic tee featuring a classic rock or pop band.",
+    "interestCategory": "Music",
+    "keywords": [
+      "band merchandise",
+      "fashion",
+      "music fan"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G031",
+    "name": "Best-Seller Novel Bundle",
+    "description": "A curated pack of three current best-selling novels.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "books",
+      "novels",
+      "reading",
+      "fiction"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G032",
+    "name": "E-Reader Device",
+    "description": "Lightweight e-reader with adjustable backlight.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "e-reader",
+      "books",
+      "reading device"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$80-$180"
+  },
+  {
+    "giftId": "G033",
+    "name": "Personalized Leather Bookmark",
+    "description": "Engraved leather bookmark with initials or a quote.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "bookmark",
+      "reading accessory"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$20"
+  },
+  {
+    "giftId": "G034",
+    "name": "Book Subscription Box (3 months)",
+    "description": "A surprise novel delivered monthly for a quarter.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "books",
+      "subscription",
+      "reading"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$70"
+  },
+  {
+    "giftId": "G035",
+    "name": "Cozy Reading Blanket & Book Set",
+    "description": "Soft throw blanket paired with a popular novel.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "reading",
+      "comfort",
+      "books"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G036",
+    "name": "Illustrated Cookbook",
+    "description": "Beautifully photographed cookbook of seasonal recipes.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "cookbook",
+      "recipes",
+      "cooking",
+      "reading"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$45"
+  },
+  {
+    "giftId": "G037",
+    "name": "Audiobook Platform Subscription",
+    "description": "Monthly credits for audiobooks on the go.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "audiobooks",
+      "listening",
+      "reading"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$50"
+  },
+  {
+    "giftId": "G038",
+    "name": "Classic Literature Boxed Set",
+    "description": "Hardcover collection of timeless literary classics.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "classics",
+      "literature",
+      "books"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G039",
+    "name": "Children's Picture Book Collection",
+    "description": "Set of colorful picture books for early readers.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "children's books",
+      "picture books"
+    ],
+    "minRecipientAge": 1,
+    "maxRecipientAge": 8,
+    "relationshipTags": [
+      "Child",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G040",
+    "name": "Personal Library Kit (Bookends + Light)",
+    "description": "Decorative bookends with a clip-on reading light.",
+    "interestCategory": "Reading & Books",
+    "keywords": [
+      "books",
+      "reading accessory",
+      "decor"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G041",
+    "name": "Video Game Gift Card",
+    "description": "Digital credit for games on a major platform.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "video games",
+      "gift card",
+      "console"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$100"
+  },
+  {
+    "giftId": "G042",
+    "name": "Wireless Gaming Controller",
+    "description": "Extra controller compatible with popular consoles.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "gaming",
+      "controller",
+      "console"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$70"
+  },
+  {
+    "giftId": "G043",
+    "name": "Board Game Collection (Family)",
+    "description": "A set of three popular strategy board games.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "board games",
+      "family game night"
+    ],
+    "minRecipientAge": 6,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G044",
+    "name": "1000-Piece Jigsaw Puzzle",
+    "description": "Detailed puzzle featuring a scenic landscape.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "puzzle",
+      "jigsaw",
+      "relaxing hobby"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G045",
+    "name": "VR Headset",
+    "description": "Standalone virtual-reality headset for games and experiences.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "virtual reality",
+      "gaming",
+      "tech"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 45,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend",
+      "Partner"
+    ],
+    "priceRangeUsd": "$200-$400"
+  },
+  {
+    "giftId": "G046",
+    "name": "Retro Mini Console",
+    "description": "Plug-and-play console preloaded with classic games.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "retro gaming",
+      "nostalgia",
+      "console"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$50-$100"
+  },
+  {
+    "giftId": "G047",
+    "name": "Party Card Game Deck",
+    "description": "Fast-paced card game great for groups.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "card games",
+      "party",
+      "group fun"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$15-$25"
+  },
+  {
+    "giftId": "G048",
+    "name": "Gaming Chair",
+    "description": "Ergonomic chair designed for long gaming sessions.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "gaming",
+      "chair",
+      "setup",
+      "comfort"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$100-$250"
+  },
+  {
+    "giftId": "G049",
+    "name": "Wooden Chess Set",
+    "description": "Handcrafted chess set with a folding board.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "chess",
+      "strategy",
+      "classic games"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G050",
+    "name": "Mobile Game Currency Card",
+    "description": "Prepaid card for in-app purchases in mobile games.",
+    "interestCategory": "Gaming",
+    "keywords": [
+      "mobile games",
+      "in-app",
+      "gift card"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 35,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$10-$50"
+  },
+  {
+    "giftId": "G051",
+    "name": "Gourmet Chocolate Box",
+    "description": "Assorted artisan chocolates in a gift box.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "chocolate",
+      "sweets",
+      "gourmet food"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$40"
+  },
+  {
+    "giftId": "G052",
+    "name": "Espresso Machine",
+    "description": "Compact machine for brewing espresso at home.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "coffee",
+      "espresso",
+      "kitchen appliance"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$100-$300"
+  },
+  {
+    "giftId": "G053",
+    "name": "Personalized Cutting Board",
+    "description": "Engraved wooden board with a name or design.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "cooking",
+      "kitchen",
+      "personalized gift"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G054",
+    "name": "Regional Cuisine Cookbook",
+    "description": "Cookbook focused on a specific world cuisine.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "cooking",
+      "recipes",
+      "cookbook"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G055",
+    "name": "Spice Subscription Box",
+    "description": "Monthly delivery of globally sourced spice blends.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "spices",
+      "cooking",
+      "subscription"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G056",
+    "name": "Air Fryer",
+    "description": "Countertop fryer for healthier, oil-free cooking.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "cooking",
+      "kitchen appliance",
+      "healthy food"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$60-$150"
+  },
+  {
+    "giftId": "G057",
+    "name": "Wine Tasting Set",
+    "description": "Glasses and accessories for an at-home wine tasting.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "wine",
+      "tasting",
+      "drinks"
+    ],
+    "minRecipientAge": 25,
+    "maxRecipientAge": 75,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G058",
+    "name": "Beginner Baking Kit",
+    "description": "Everything needed to bake a first batch of cookies.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "baking",
+      "cookies",
+      "kids cooking"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G059",
+    "name": "Artisan Coffee Beans Sampler",
+    "description": "Selection of small-batch roasted coffee beans.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "coffee",
+      "beans",
+      "sampler"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G060",
+    "name": "Cocktail Making Kit",
+    "description": "Bar tools and recipe cards for mixing cocktails.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "cocktails",
+      "mixology",
+      "drinks"
+    ],
+    "minRecipientAge": 21,
+    "maxRecipientAge": 65,
+    "relationshipTags": [
+      "Friend",
+      "Partner",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G061",
+    "name": "Travel Backpack",
+    "description": "Durable backpack sized for carry-on travel.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "backpack",
+      "luggage"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$50-$120"
+  },
+  {
+    "giftId": "G062",
+    "name": "Luggage Organizer Set",
+    "description": "Packing cubes and a scale for easier travel.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "packing",
+      "organization"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G063",
+    "name": "Noise-Cancelling Travel Pillow",
+    "description": "Neck pillow with built-in noise reduction for flights.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "flying",
+      "comfort"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G064",
+    "name": "City Guidebook Set",
+    "description": "Guidebooks covering top destinations and hidden gems.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "guidebook",
+      "exploring"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G065",
+    "name": "Travel Document Organizer",
+    "description": "Wallet to hold passports, tickets, and cards.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "documents",
+      "organization"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G066",
+    "name": "Portable Power Bank",
+    "description": "High-capacity charger to keep devices powered on the go.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "tech",
+      "charging"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G067",
+    "name": "Language Learning App Subscription",
+    "description": "Full-year access to a language-learning app.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "language",
+      "learning",
+      "travel prep"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G068",
+    "name": "Weekend Getaway Gift Card",
+    "description": "Voucher toward a short trip or hotel stay.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "getaway",
+      "trip",
+      "vacation"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$100-$300"
+  },
+  {
+    "giftId": "G069",
+    "name": "Travel-Size Toiletry Kit",
+    "description": "Refillable bottles and case for carry-on toiletries.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "toiletries",
+      "packing"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G070",
+    "name": "Scratch-Off World Map Poster",
+    "description": "Poster for tracking visited countries by scratching them off.",
+    "interestCategory": "Travel",
+    "keywords": [
+      "travel",
+      "map",
+      "decor"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$35"
+  },
+  {
+    "giftId": "G071",
+    "name": "Wireless Earbuds",
+    "description": "Compact earbuds with a charging case.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "earbuds",
+      "audio",
+      "tech"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$150"
+  },
+  {
+    "giftId": "G072",
+    "name": "Smartwatch",
+    "description": "Watch that tracks fitness and shows notifications.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "smartwatch",
+      "tech",
+      "fitness"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$80-$300"
+  },
+  {
+    "giftId": "G073",
+    "name": "Bluetooth Item Tracker",
+    "description": "Small tag that helps locate keys or bags via app.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "tech",
+      "gadget",
+      "tracker"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$30"
+  },
+  {
+    "giftId": "G074",
+    "name": "Smart Home Speaker",
+    "description": "Voice-controlled speaker for music and smart-home control.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "smart home",
+      "speaker",
+      "tech"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$100"
+  },
+  {
+    "giftId": "G075",
+    "name": "Phone Camera Lens Kit",
+    "description": "Clip-on lenses that upgrade smartphone photography.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "photography",
+      "phone",
+      "tech"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Child"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G076",
+    "name": "Tablet",
+    "description": "Lightweight tablet for browsing, reading, and media.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "tablet",
+      "tech",
+      "entertainment"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$150-$400"
+  },
+  {
+    "giftId": "G077",
+    "name": "USB-C Docking Station",
+    "description": "Hub that expands a laptop's ports for the desk.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "office tech",
+      "laptop accessory"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 65,
+    "relationshipTags": [
+      "Colleague",
+      "Partner"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G078",
+    "name": "Robot Vacuum",
+    "description": "Self-navigating vacuum for automatic home cleaning.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "smart home",
+      "cleaning",
+      "tech"
+    ],
+    "minRecipientAge": 25,
+    "maxRecipientAge": 75,
+    "relationshipTags": [
+      "Partner",
+      "Parent"
+    ],
+    "priceRangeUsd": "$150-$350"
+  },
+  {
+    "giftId": "G079",
+    "name": "E-Ink Writing Tablet",
+    "description": "Paper-like tablet for notes that sync digitally.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "productivity",
+      "tech",
+      "notes"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Colleague",
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$60-$150"
+  },
+  {
+    "giftId": "G080",
+    "name": "Beginner Drone",
+    "description": "Easy-to-fly drone with a built-in camera.",
+    "interestCategory": "Technology & Gadgets",
+    "keywords": [
+      "drone",
+      "tech",
+      "gadget"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 50,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$60-$200"
+  },
+  {
+    "giftId": "G081",
+    "name": "Leather Wallet",
+    "description": "Slim genuine-leather wallet with card slots.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fashion",
+      "accessories",
+      "leather goods"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G082",
+    "name": "Silk Scarf",
+    "description": "Printed silk scarf that pairs with many outfits.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fashion",
+      "accessories",
+      "scarf"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G083",
+    "name": "Skincare Gift Set",
+    "description": "Cleanser, serum, and moisturizer travel-size trio.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "skincare",
+      "beauty",
+      "self-care"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G084",
+    "name": "Designer-Style Sunglasses",
+    "description": "UV-protective sunglasses with a classic frame.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fashion",
+      "accessories",
+      "sunglasses"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$90"
+  },
+  {
+    "giftId": "G085",
+    "name": "Personalized Jewelry Piece",
+    "description": "Necklace or bracelet engraved with initials.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "jewelry",
+      "fashion",
+      "personalized gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Sibling"
+    ],
+    "priceRangeUsd": "$30-$100"
+  },
+  {
+    "giftId": "G086",
+    "name": "Perfume/Cologne Set",
+    "description": "Signature scent paired with a matching lotion.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fragrance",
+      "beauty",
+      "perfume"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Parent"
+    ],
+    "priceRangeUsd": "$40-$100"
+  },
+  {
+    "giftId": "G087",
+    "name": "Cozy Knit Sweater",
+    "description": "Soft sweater suited for cooler weather.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fashion",
+      "clothing",
+      "cozy"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G088",
+    "name": "Classic-Style Watch",
+    "description": "Analog watch with a leather or steel band.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "watch",
+      "fashion",
+      "accessories"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$50-$200"
+  },
+  {
+    "giftId": "G089",
+    "name": "Makeup Brush Set",
+    "description": "Professional-grade brushes with a travel case.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "makeup",
+      "beauty",
+      "cosmetics"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G090",
+    "name": "Handbag or Tote Bag",
+    "description": "Versatile bag for daily use or work.",
+    "interestCategory": "Fashion & Beauty",
+    "keywords": [
+      "fashion",
+      "bag",
+      "accessories"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Friend",
+      "Parent"
+    ],
+    "priceRangeUsd": "$40-$120"
+  },
+  {
+    "giftId": "G091",
+    "name": "Watercolor Paint Set",
+    "description": "Artist-grade paints with brushes and paper pad.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "painting",
+      "art",
+      "watercolor"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G092",
+    "name": "DIY Pottery Kit",
+    "description": "At-home kit for shaping and painting clay pieces.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "pottery",
+      "crafts",
+      "clay art"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G093",
+    "name": "Adult Coloring Book & Pencils",
+    "description": "Detailed coloring book with a quality pencil set.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "coloring",
+      "relaxing hobby",
+      "art"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$25"
+  },
+  {
+    "giftId": "G094",
+    "name": "Calligraphy Starter Kit",
+    "description": "Pens, ink, and guide sheets for learning calligraphy.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "calligraphy",
+      "handwriting",
+      "art"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G095",
+    "name": "Knitting or Crochet Kit",
+    "description": "Yarn, needles, and a pattern for a first project.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "knitting",
+      "crochet",
+      "crafts"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G096",
+    "name": "Scrapbooking Supplies Set",
+    "description": "Papers, stickers, and adhesives for scrapbook pages.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "scrapbooking",
+      "memories",
+      "crafts"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G097",
+    "name": "Sketchbook & Pro Pencil Set",
+    "description": "Blank sketchbook paired with graded drawing pencils.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "drawing",
+      "sketching",
+      "art"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G098",
+    "name": "Custom Portrait Commission Voucher",
+    "description": "Voucher for a hand-drawn or painted portrait.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "art commission",
+      "portrait",
+      "personalized gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$50-$150"
+  },
+  {
+    "giftId": "G099",
+    "name": "Candle Making Kit",
+    "description": "Wax, wicks, and scents for pouring custom candles.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "candle making",
+      "crafts",
+      "home decor"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$45"
+  },
+  {
+    "giftId": "G100",
+    "name": "Jewelry Making Kit",
+    "description": "Beads and tools for designing bracelets and necklaces.",
+    "interestCategory": "Art & Crafts",
+    "keywords": [
+      "jewelry making",
+      "crafts",
+      "beads"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G101",
+    "name": "Streaming Service Gift Subscription",
+    "description": "Prepaid months of a popular streaming platform.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "streaming",
+      "movies",
+      "tv shows"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$100"
+  },
+  {
+    "giftId": "G102",
+    "name": "Classic Movie Boxed Set (Blu-ray)",
+    "description": "Collection of beloved films in one set.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "movies",
+      "blu-ray",
+      "film collection"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G103",
+    "name": "Home Theater Popcorn Machine",
+    "description": "Tabletop machine for fresh popcorn during movie nights.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "movie night",
+      "popcorn",
+      "home theater"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G104",
+    "name": "Framed Movie Poster",
+    "description": "Print of a classic or favorite film, ready to hang.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "movie poster",
+      "decor",
+      "film fan"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G105",
+    "name": "Collectible Vinyl Figure",
+    "description": "Stylized figure of a popular movie or show character.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "collectible",
+      "figure",
+      "fandom"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 45,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$12-$25"
+  },
+  {
+    "giftId": "G106",
+    "name": "Favorite-Show Print Blanket",
+    "description": "Soft blanket printed with a beloved show's artwork.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "tv show",
+      "blanket",
+      "fandom"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$45"
+  },
+  {
+    "giftId": "G107",
+    "name": "Cinema Gift Card",
+    "description": "Credit for tickets and snacks at the movie theater.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "cinema",
+      "movies",
+      "tickets"
+    ],
+    "minRecipientAge": 8,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$60"
+  },
+  {
+    "giftId": "G108",
+    "name": "Retro Film Projector Toy",
+    "description": "Small projector that plays classic cartoon reels.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "retro",
+      "movies",
+      "novelty toy"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G109",
+    "name": "Complete TV Series Box Set",
+    "description": "All seasons of a favorite show in one collection.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "tv series",
+      "box set",
+      "binge watching"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G110",
+    "name": "Screenplay / Behind-the-Scenes Book",
+    "description": "Book exploring the making of a favorite film or show.",
+    "interestCategory": "Movies & TV",
+    "keywords": [
+      "film",
+      "screenplay",
+      "behind the scenes"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Friend",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G111",
+    "name": "Herb Garden Starter Kit",
+    "description": "Pots, soil, and seeds for growing kitchen herbs indoors.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "gardening",
+      "herbs",
+      "indoor plants"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G112",
+    "name": "Camping Hammock",
+    "description": "Lightweight, packable hammock for camping trips.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "camping",
+      "outdoors",
+      "hammock"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Friend",
+      "Sibling",
+      "Partner"
+    ],
+    "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G113",
+    "name": "Gardening Tool Set",
+    "description": "Hand trowel, gloves, and pruners for the garden.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "gardening",
+      "tools",
+      "outdoors"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Parent",
+      "Partner"
+    ],
+    "priceRangeUsd": "$25-$55"
+  },
+  {
+    "giftId": "G114",
+    "name": "Decorative Bird Feeder",
+    "description": "Feeder that attracts songbirds to the backyard.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "birdwatching",
+      "garden",
+      "outdoors"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Parent",
+      "Partner"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G115",
+    "name": "Insulated Camping Cooler",
+    "description": "Keeps food and drinks cold on outdoor trips.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "camping",
+      "outdoors",
+      "picnic"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Partner",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$40-$90"
+  },
+  {
+    "giftId": "G116",
+    "name": "Hiking Backpack",
+    "description": "Supportive pack sized for day hikes.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "hiking",
+      "outdoors",
+      "backpack"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 65,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$50-$120"
+  },
+  {
+    "giftId": "G117",
+    "name": "Solar Garden Lights Set",
+    "description": "Solar-powered lights that line garden paths at night.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "garden decor",
+      "outdoors",
+      "solar"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Parent",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G118",
+    "name": "Portable Grill",
+    "description": "Compact grill for patios, camping, or tailgating.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "grilling",
+      "outdoors",
+      "bbq"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$40-$100"
+  },
+  {
+    "giftId": "G119",
+    "name": "Birdwatching Binoculars",
+    "description": "Compact binoculars suited for spotting wildlife.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "birdwatching",
+      "nature",
+      "outdoors"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Parent",
+      "Partner"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G120",
+    "name": "Mini Greenhouse Kit",
+    "description": "Small greenhouse for starting seedlings at home.",
+    "interestCategory": "Gardening & Outdoors",
+    "keywords": [
+      "gardening",
+      "greenhouse",
+      "plants"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Parent",
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G121",
+    "name": "Instant Camera (Polaroid style)",
+    "description": "Camera that prints photos immediately after shooting.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "instant camera",
+      "memories"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$60-$100"
+  },
+  {
+    "giftId": "G122",
+    "name": "Portable Photo Printer",
+    "description": "Compact printer for printing phone photos anywhere.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "printing",
+      "phone photos"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$80-$150"
+  },
+  {
+    "giftId": "G123",
+    "name": "Personalized Camera Strap",
+    "description": "Camera strap embroidered with a name or pattern.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "camera accessory"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Partner"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G124",
+    "name": "Tripod Stand",
+    "description": "Adjustable tripod for cameras and phones.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "tripod",
+      "video"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G125",
+    "name": "Custom Photo Album",
+    "description": "Printed album for organizing favorite memories.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photo album",
+      "memories",
+      "gift"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G126",
+    "name": "Lens Cleaning Kit",
+    "description": "Cleaning solution and cloths for camera lenses.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "camera care"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$25"
+  },
+  {
+    "giftId": "G127",
+    "name": "Ring Light for Content Creation",
+    "description": "LED ring light for videos and photo shoots.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "content creation",
+      "photography",
+      "video"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 40,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G128",
+    "name": "Waterproof Action Camera",
+    "description": "Rugged camera for adventures and sports footage.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "action camera",
+      "adventure",
+      "video"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 45,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$100-$250"
+  },
+  {
+    "giftId": "G129",
+    "name": "Photography Class Voucher",
+    "description": "Voucher for an intro-level photography course.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "photography",
+      "class",
+      "learning"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Friend",
+      "Partner",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$50-$150"
+  },
+  {
+    "giftId": "G130",
+    "name": "Vintage Camera Display Piece",
+    "description": "Classic film camera as a decorative collectible.",
+    "interestCategory": "Photography",
+    "keywords": [
+      "vintage",
+      "photography",
+      "collectible"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Friend"
+    ],
+    "priceRangeUsd": "$40-$100"
+  },
+  {
+    "giftId": "G131",
+    "name": "Custom Pet Portrait",
+    "description": "Illustrated or painted portrait of the recipient's pet.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet",
+      "portrait",
+      "personalized gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$30-$80"
+  },
+  {
+    "giftId": "G132",
+    "name": "Dog/Cat Toy Bundle",
+    "description": "Assorted toys for keeping pets entertained.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet toys",
+      "dog",
+      "cat"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G133",
+    "name": "Cozy Pet Bed",
+    "description": "Soft, washable bed for a dog or cat.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet bed",
+      "dog",
+      "cat",
+      "comfort"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$60"
+  },
+  {
+    "giftId": "G134",
+    "name": "Pet Treat Subscription Box",
+    "description": "Monthly box of pet treats and snacks.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet food",
+      "treats",
+      "subscription"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$50"
+  },
+  {
+    "giftId": "G135",
+    "name": "Personalized Pet ID Tag",
+    "description": "Engraved tag with the pet's name and contact info.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet accessory",
+      "personalized gift"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$10-$20"
+  },
+  {
+    "giftId": "G136",
+    "name": "Interactive Pet Camera",
+    "description": "Camera that lets owners watch and toss treats remotely.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet tech",
+      "monitoring",
+      "dog",
+      "cat"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Friend"
+    ],
+    "priceRangeUsd": "$40-$100"
+  },
+  {
+    "giftId": "G137",
+    "name": "Aquarium Starter Kit",
+    "description": "Small tank with filter and lighting for beginner fish keeping.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "fish",
+      "aquarium",
+      "pets"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G138",
+    "name": "Pet Grooming Kit",
+    "description": "Brushes, clippers, and shampoo for at-home grooming.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet grooming",
+      "dog",
+      "cat"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Partner",
+      "Parent"
+    ],
+    "priceRangeUsd": "$25-$55"
+  },
+  {
+    "giftId": "G139",
+    "name": "Dog Leash & Harness Set",
+    "description": "Matching leash and harness for walks.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "dog walking",
+      "pet accessory"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G140",
+    "name": "Bird Cage Accessories Set",
+    "description": "Perches, feeders, and toys for pet birds.",
+    "interestCategory": "Pets & Animals",
+    "keywords": [
+      "pet birds",
+      "cage accessories"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Parent",
+      "Partner"
+    ],
+    "priceRangeUsd": "$20-$45"
+  },
+  {
+    "giftId": "G141",
+    "name": "Smart LED Light Strip Kit",
+    "description": "Color-changing lights controlled from a phone app.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "home decor",
+      "lighting",
+      "tech"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 60,
+    "relationshipTags": [
+      "Child",
+      "Sibling",
+      "Friend"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G142",
+    "name": "Cozy Throw Blanket",
+    "description": "Soft blanket that pairs well with any couch.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "home decor",
+      "comfort",
+      "blanket"
+    ],
+    "minRecipientAge": 10,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$45"
+  },
+  {
+    "giftId": "G143",
+    "name": "Scented Candle Set",
+    "description": "Trio of candles in complementary seasonal scents.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "home decor",
+      "candles",
+      "relaxing"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G144",
+    "name": "Home Repair Tool Kit",
+    "description": "Compact set of essential tools for household fixes.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "diy",
+      "tools",
+      "home repair"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$30-$70"
+  },
+  {
+    "giftId": "G145",
+    "name": "Low-Maintenance Indoor Plant",
+    "description": "Easy-care plant that thrives with minimal attention.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "plants",
+      "home decor",
+      "greenery"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$35"
+  },
+  {
+    "giftId": "G146",
+    "name": "Personalized Doormat",
+    "description": "Welcome mat printed with a name or family joke.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "home decor",
+      "personalized gift"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Partner",
+      "Parent"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G147",
+    "name": "Wall Art Print Set",
+    "description": "Set of framed prints for living-room or bedroom walls.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "wall art",
+      "home decor"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G148",
+    "name": "Coffee/Tea Mug Set",
+    "description": "Matching mugs for coffee or tea lovers.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "kitchen",
+      "home",
+      "coffee",
+      "tea"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "All"
+    ],
+    "priceRangeUsd": "$15-$30"
+  },
+  {
+    "giftId": "G149",
+    "name": "Storage Organizer Bins",
+    "description": "Stackable bins for tidying closets or shelves.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "organization",
+      "home",
+      "storage"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Partner",
+      "Parent",
+      "Colleague"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G150",
+    "name": "Small Furniture Assembly Kit",
+    "description": "Compact flat-pack shelf perfect as a starter DIY project.",
+    "interestCategory": "Home & DIY",
+    "keywords": [
+      "diy",
+      "furniture",
+      "home project"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Partner",
+      "Parent"
+    ],
+    "priceRangeUsd": "$30-$60"
+  }
+]

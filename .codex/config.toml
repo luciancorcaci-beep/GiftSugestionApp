@@ -1,0 +1,7 @@
+[mcp_servers.atlassian-rovo]
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.atlassian.com/v1/mcp"]
+
+[mcp_servers.helix]
+command = "npx"
+args = ["-y", "mcp-remote", "https://helix-mcp.3pillarglobal.com/helix-atlas/mcp", "8765", "--header", "x-solution-id:<your-solution-id>", "--static-oauth-client-info", "{\"client_id\":\"helix-local-mcp-agent\"}"]
