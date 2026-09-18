@@ -1,8 +1,8 @@
 # Project Status
 
 **Last Updated**: 2026-09-18 00:00
-**Updated By**: QA
-**Overall Status**: 🟢 ON TRACK
+**Updated By**: DEVOPS
+**Overall Status**: 🔴 BLOCKED
 
 ---
 
@@ -31,6 +31,8 @@
 | Review | ✅ Done | AIRE_REVIEWER | 2026-09-17 | `docs/reviews/all-stories-code-review-v3.md` (APPROVED WITH COMMENTS) | 2026-09-17 00:00 |
 | QA | ✅ Done | AIRE_QA | 2026-09-18 | `docs/testing/validation-report-full-2026-09-18.md` (PASS) | 2026-09-18 00:00 |
 | Epic 3: Curated Gift Catalog | ✅ Done | AIRE_DEV | 2026-09-18 | 3/3 stories done | 2026-09-18 00:00 |
+| DevOps Discovery | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/discovery-report.md` (Vercel target confirmed) | 2026-09-18 00:00 |
+| DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-18 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` | 2026-09-18 00:00 |
 
 ---
 
@@ -103,6 +105,34 @@
 - [x] Revised test plan in place — removed 4 obsolete scenarios, added 10 new ones covering the catalog matching algorithm, catalog data integrity, and the no-AI-dependency proof; 20 requirements traced (up from 17) ✅
 - [x] Executed the plan: full automated suite (128/128 tests, 96.47% coverage), lint/typecheck/build clean, plus live-server checks with `.env` physically removed (real catalog recommendations, zero AI dependency), nonsense-interest fallback, invalid-relationship rejection, and grep-verified budget non-use ✅
 - [x] **Result: 🟢 PASS — READY FOR RELEASE** — `docs/testing/validation-report-full-2026-09-18.md` (0 bugs found) ✅
+
+### DevOps Discovery
+
+**Owner**: DEVOPS
+**Status**: ✅ Done
+**Started**: 2026-09-18
+**Completed**: 2026-09-18
+
+**Progress**:
+- [x] Determined the standard cloud-IaC (Azure/AWS/GCP Terraform) discovery path did not apply — architecture doc specifies Vercel, no DB/cache/queue/external services exist ✅
+- [x] Confirmed Vercel as deployment target with user; skipped the inapplicable Terraform-module questionnaire ✅
+- [x] Found no git repository existed — initialized one locally (`git init`, root commit `d3ce190`, 108 files, verified no secrets/build artifacts committed) ✅
+- [x] Collected CI/CD scope (GitHub Actions: lint/typecheck/test/coverage + CodeQL + Dependabot + gitleaks), branch strategy (main → prod with PR previews), and domain decision (default `*.vercel.app`) ✅
+- [x] **Result**: `docs/deployment/discovery-report.md` — no secrets required in production (Claude API dependency was already retired in Epic 3) ✅
+
+### DevOps Pipeline
+
+**Owner**: DEVOPS
+**Status**: ✅ Done
+**Started**: 2026-09-18
+**Completed**: 2026-09-18
+
+**Progress**:
+- [x] Built `.github/workflows/ci.yml` (lint, typecheck, test+coverage, build, dependency-audit, secret-scan jobs) and `.github/workflows/codeql.yml` (SAST) and `.github/dependabot.yml` (SCA) ✅
+- [x] Found the `--coverage.thresholds.*` CI gate silently never fails on this project's pinned vitest 0.34.6 (verified empirically both via CLI flags and `vitest.config.ts` — an impossible 99% threshold still exited 0) — built `scripts/check-coverage.mjs` instead, which reads the json-summary report directly and reliably fails the build; verified working in both directions (pass and fail) before wiring into CI ✅
+- [x] Found `next@13.5.11` (production dependency) has multiple known high/critical CVEs (unauthenticated RCE, SSRF, cache poisoning, auth bypass) whose fix requires a 13→16 major upgrade — flagged to user rather than silently upgrading (breaking change, out of scope) or silently shipping a gate that would immediately red every PR; user chose to scope `dependency-audit` to `--omit=dev` and mark it `continue-on-error: true` for now, tracked as a follow-up below ✅
+- [x] Validated all 3 YAML files parse correctly; confirmed `npm run lint`/`typecheck`/`build` and the full 128-test suite still pass unaffected ✅
+- [x] **Result**: CI pipeline ready; `docs/deployment/pipeline-secrets.md` confirms zero secrets required anywhere ✅
 
 ---
 
@@ -281,13 +311,20 @@
 - [x] **QA Validation (Full) — Epic 3**: 🟢 PASS — READY FOR RELEASE — 2026-09-18
   - Evidence: `docs/testing/validation-report-full-2026-09-18.md`
   - 20/20 requirements traced with evidence; 128/128 automated tests + 6 independent live-server checks all passing; 0 bugs found; no-AI-dependency proven against a real server with `.env` physically absent
+- [x] **DevOps Discovery**: Vercel deployment target confirmed — 2026-09-18
+  - Evidence: `docs/deployment/discovery-report.md`
+  - Git repository initialized (root commit `d3ce190`); no cloud IaC needed (no DB/cache/queue/external services); CI scope defined (GitHub Actions: lint/typecheck/test/coverage + CodeQL + Dependabot); no production secrets required
+- [x] **DevOps Pipeline**: CI/CD pipeline built — 2026-09-18
+  - Evidence: `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml`, `docs/deployment/pipeline-secrets.md`
+  - Reliable coverage gate (`scripts/check-coverage.mjs`) built after discovering vitest 0.34.6's native threshold flags silently never fail; `next@13.5.11` production-dependency CVEs found and tracked (see Upcoming), not silently patched or ignored
 
 ---
 
 ## Upcoming
 
-1. **Regression**: `aire-qa-regression` to double-check nothing in Epic 1/2 broke alongside Epic 3's changes
-2. **Architecture decision**: Raise NEW-002's remaining serverless-state gap (in-memory rate limiter vs. Vercel's serverless model) with ARCHITECT/PRODUCT_OWNER — not a DEV code-fix item; the rate limiter survived Epic 3 unchanged (only the concurrency limiter/timeout retired with the AI adapter)
+1. **Push to GitHub**: user creates the remote repo and pushes the existing local commit; then connects it to Vercel via the dashboard
+2. **🔴 Security follow-up (tracked, not blocking)**: Upgrade `next` 13.5.11 → 16.x to resolve multiple known high/critical CVEs (unauthenticated RCE, SSRF, cache poisoning, auth bypass) found during pipeline setup. This is a dedicated upgrade project — App Router/middleware compatibility review, full re-test of all 128 tests plus the CSP-nonce/middleware work from Epic 1-2 — not a routine dependency bump. `dependency-audit` CI job is currently `continue-on-error: true` pending this.
+3. **Architecture decision**: Raise NEW-002's remaining serverless-state gap (in-memory rate limiter vs. Vercel's serverless model) with ARCHITECT/PRODUCT_OWNER — not a DEV code-fix item; the rate limiter survived Epic 3 unchanged (only the concurrency limiter/timeout retired with the AI adapter). This is now directly relevant since Vercel is the confirmed deployment target.
 
 ---
 
@@ -295,7 +332,7 @@
 
 | ID | Description | Owner | Opened | Status | Recorded |
 |----|-------------|-------|--------|--------|----------|
-| — | (none) — all-stories review APPROVED WITH COMMENTS 2026-09-17, see `docs/reviews/all-stories-code-review-v3.md`. NEW-002's serverless-state gap is not a blocker; tracked as an upcoming architecture decision above. | — | — | — | 2026-09-17 00:00 |
+| NEXTJS-CVE | `next@13.5.11` (production dependency) has multiple known high/critical CVEs (unauthenticated RCE on Windows-hosted servers, RCE via AVIF image optimization, SSRF, cache poisoning, auth bypass). Fix requires a 13→16 major upgrade. Blocks production release until resolved; does not block CI/development (`dependency-audit` job is `continue-on-error: true` by explicit user decision, see `docs/deployment/pipeline-secrets.md`). | DEVOPS/DEV | 2026-09-18 | Open | 2026-09-18 00:00 |
 
 ---
 
@@ -315,5 +352,7 @@
 | REVIEWER | Reviewed story 3.3; APPROVED WITH COMMENTS (ISS-001 🟡) | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | DEV | Remediated story-3.3-code-review-v1.md (ISS-001 resolved) — all 9 stories fully remediated | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | QA | Revised test plan for Epic 3 (10 new scenarios, 4 obsolete removed) | Standby | 2026-09-18 | 2026-09-18 00:00 |
-| QA | Full validation complete (Epic 3) — PASS, 0 bugs found | Idle | 2026-09-18 | 2026-09-18 00:00 |
+| QA | Full validation complete (Epic 3) — PASS, 0 bugs found | Standby | 2026-09-18 | 2026-09-18 00:00 |
+| DEVOPS | Discovery complete — Vercel target confirmed, git initialized | Standby | 2026-09-18 | 2026-09-18 00:00 |
+| DEVOPS | CI/CD pipeline built; flagged next@13.5.11 production CVEs (NEXTJS-CVE) | Idle | 2026-09-18 | 2026-09-18 00:00 |
 

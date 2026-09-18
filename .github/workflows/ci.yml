@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  workflow_call:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+
+  test:
+    name: Test + Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: Run tests with coverage
+        run: npm run test:coverage
+      - name: Enforce ≥85% coverage gate
+        # vitest 0.34.6 (pinned in this project) does not fail the process on
+        # unmet --coverage.thresholds / vitest.config.ts thresholds — verified
+        # empirically. This script reads the json-summary report and enforces
+        # the gate reliably instead. See scripts/check-coverage.mjs.
+        run: node scripts/check-coverage.mjs
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 14
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+  dependency-audit:
+    name: Dependency Audit (npm audit, production deps)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - name: npm audit — production dependencies only
+        # Scoped to --omit=dev: dev-only tooling (vitest/undici, used only in
+        # tests) never ships to the deployed app, so its CVEs don't affect
+        # production risk. Non-blocking (continue-on-error) for now: Next.js
+        # 13.5.11 has known high/critical CVEs whose fix requires a 13->16
+        # major-version upgrade (breaking change) that is tracked as a
+        # separate, dedicated follow-up in docs/status.md rather than done
+        # silently here. Remove continue-on-error once that upgrade lands.
+        run: npm audit --omit=dev --audit-level=high
+        continue-on-error: true
+
+  secret-scan:
+    name: Secret Scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
