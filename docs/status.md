@@ -1,8 +1,8 @@
 # Project Status
 
-**Last Updated**: 2026-09-18 00:00
+**Last Updated**: 2026-09-23 08:00
 **Updated By**: DEVOPS
-**Overall Status**: 🟡 READY TO SHIP (with an open, accepted blocker — see Blockers)
+**Overall Status**: 🟢 ON TRACK
 
 ---
 
@@ -20,24 +20,211 @@
 
 | Step | Status | Owner | Updated | Evidence | Recorded |
 |------|--------|-------|---------|----------|----------|
-| Requirements | ✅ Done | AIRE_ANALYST_PM_GREENFIELD | 2026-09-18 | `docs/requirements.md` (amended for catalog-based matching) | 2026-09-18 00:00 |
+| System Discovery | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/current/00-system-overview.md` | 2026-09-22 00:00 |
+| Deep-Dive | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/current/01-full-system-deep-dive.md` | 2026-09-22 01:00 |
+| Requirements | ✅ Done | AIRE_ARCHITECT | 2026-09-23 | `docs/requirements.md` v1.2 (reconciled: catalog data changed after all, via user-supplied `Gift_Ideas_Database-V1.xlsx`) | 2026-09-23 04:00 |
+| Target Architecture | ✅ Done | AIRE_ARCHITECT | 2026-09-23 | `docs/architecture/design/02-target-architecture-brownfield.md` v1.1 (reconciliation note added — "no catalog changes" decision superseded, struck through and explained, not deleted) | 2026-09-23 04:00 |
+| Patterns | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/design/03-patterns-and-standards-brownfield.md` | 2026-09-22 04:00 |
 | Architecture | ✅ Done | AIRE_ARCHITECT | 2026-09-16 | `docs/architecture/design/00-system-architecture-greenfield.md` | 2026-09-16 00:00 |
 | Patterns | ✅ Done | AIRE_ARCHITECT | 2026-09-16 | `docs/architecture/design/01-patterns-and-standards-greenfield.md` | 2026-09-16 00:00 |
 | UI/UX Design | ✅ Done | AIRE_UI_UX_DESIGNER | 2026-09-16 | `docs/ui-ux/ui-ux-spec.md` | 2026-09-16 00:00 |
-| Implementation Plan | ✅ Done | AIRE_PRODUCT_OWNER | 2026-09-16 | `docs/plans/implementation-plan.md` | 2026-09-16 00:00 |
+| Implementation Plan | ✅ Done | AIRE_PRODUCT_OWNER | 2026-09-23 | `docs/plans/implementation-plan.md` (Epic 4 added: expanded relationship options) | 2026-09-23 00:00 |
 | Build Cycles | ✅ Done | BUILD_CYCLE_PLANNER | 2026-09-16 | `docs/plans/builds/` | 2026-09-16 00:00 |
 | Epic 1: Foundation | ✅ Done | AIRE_DEV | 2026-09-16 | 3/3 stories done | 2026-09-16 00:00 |
 | Epic 2: Recommendation Engine | ✅ Done | AIRE_DEV | 2026-09-16 | 3/3 stories done | 2026-09-16 00:00 |
 | Review | ✅ Done | AIRE_REVIEWER | 2026-09-17 | `docs/reviews/all-stories-code-review-v3.md` (APPROVED WITH COMMENTS) | 2026-09-17 00:00 |
+| Review (Story 4.1) | ✅ Done | AIRE_REVIEWER | 2026-09-23 | `docs/reviews/story-4.1-code-review-v1.md` (APPROVED WITH COMMENTS) | 2026-09-23 02:00 |
 | QA | ✅ Done | AIRE_QA | 2026-09-18 | `docs/testing/validation-report-full-2026-09-18.md` (PASS) | 2026-09-18 00:00 |
+| QA (Story 4.1) | ✅ Done | AIRE_QA | 2026-09-23 | `docs/testing/validation-report-story-4.1-2026-09-23.md` (PASS) | 2026-09-23 06:00 |
 | Epic 3: Curated Gift Catalog | ✅ Done | AIRE_DEV | 2026-09-18 | 3/3 stories done | 2026-09-18 00:00 |
-| DevOps Discovery | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/discovery-report.md` (Vercel target confirmed) | 2026-09-18 00:00 |
+| Epic 4: Expanded Relationship Options | ✅ Done | AIRE_DEV | 2026-09-23 | 1/1 stories done | 2026-09-23 00:00 |
+| DevOps Discovery | ✅ Done | DEVOPS | 2026-09-23 | `docs/deployment/discovery-report.md` (Vercel target confirmed; reconfirmed accurate post-Epic-4, no changes) | 2026-09-23 08:00 |
 | DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-18 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` | 2026-09-18 00:00 |
 | DevOps Deploy | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/deployment-plan.md`, `runbook-deploy.md`, `runbook-rollback.md`, `runbook-troubleshoot.md`, `architecture.md`, `quick-reference.md` (Vercel-scoped; server/Terraform/SSL phases skipped as inapplicable) | 2026-09-18 00:00 |
 
 ---
 
 ## Current Step Details
+
+### System Discovery
+
+**Owner**: AIRE_ARCHITECT
+**Status**: ✅ Done
+**Started**: 2026-09-22
+**Completed**: 2026-09-22
+
+**Progress**:
+- [x] Phase 0: Reference check — `SPEC/references/` empty; `docs/helix/INDEX.md` checked (Helix solution has 0 documents) ✅
+- [x] Phase 1: Initial scan — root structure, modules, entry points, config files identified ✅
+- [x] Phase 2: Technology analysis — Next.js 13.5.11/React 18.2.0/TypeScript 5.3.3, no DB, no external runtime services (verified against `package.json` and source) ✅
+- [x] Phase 3: Architecture mapping — layered monolith (domain/application/infrastructure/presentation), Mermaid diagram created ✅
+- [x] Phase 4: Documentation — `docs/architecture/current/00-system-overview.md` written ✅
+- [x] Phase 5: Diagram preview — `docs/architecture-diagrams/00-system-overview-diagrams.md` created ✅
+- [x] Found and flagged design/code drift: `docs/architecture/design/00-system-architecture-greenfield.md` still describes a retired Claude-AI-based engine; actual code uses static catalog matching (Epic 3) ✅
+
+### QA Validation (Story 4.1)
+
+**Owner**: AIRE_QA
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Executed all 14 scenarios from `docs/testing/test-plan-story-4.1.md` ✅
+- [x] Independently re-ran the full suite, coverage, lint, typecheck rather than trusting DEV's prior evidence — 150/150 passing, 96.48% coverage, 0 lint/typecheck errors ✅
+- [x] Independently ran a **fresh** live E2E check (new build, new server on a different port, new curl calls) rather than reusing DEV's earlier live verification — incidentally proved the new dedicated catalog entries (e.g. `G162`) are reachable through the real matching algorithm, not just present in the data ✅
+- [x] Confirmed original 150 catalog entries byte-identical and no duplicate relationship list survives anywhere in `src/` ✅
+- [x] **Result: 🟢 PASS — READY FOR RELEASE** — `docs/testing/validation-report-story-4.1-2026-09-23.md` (0 bugs found; one process note: implementation still uncommitted) ✅
+
+### QA Test Plan (Story 4.1)
+
+**Owner**: AIRE_QA
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Source resolution: `docs/plans/implementation-plan.md` + `docs/plans/stories/epic-4-story-4.1-*.md` used (no need to ask for scope — user already specified) ✅
+- [x] 8 requirements traced (from `docs/requirements.md` v1.2 + the story's AC), 14 test scenarios designed (unit, integration, and live E2E) ✅
+- [x] Test data, coverage goals, and project-specific quality gates defined (no duplicate relationship list; original 150 catalog entries unmodified) ✅
+- [x] `docs/testing/test-plan-story-4.1.md` created ✅
+
+### Documentation Reconciliation (Catalog Data Source)
+
+**Owner**: AIRE_ARCHITECT
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Swept every doc for stale "150 entries" / "no catalog changes" statements: `docs/requirements.md`, `docs/architecture/current/00-system-overview.md`, `docs/architecture/current/01-full-system-deep-dive.md`, `docs/architecture/design/02-target-architecture-brownfield.md`, and both diagram-preview files ✅
+- [x] `docs/requirements.md` → v1.2: corrected Success Criteria and struck through (not deleted) the two now-inaccurate "no catalog changes" bullets, with a superseded note explaining what actually happened ✅
+- [x] `docs/architecture/design/02-target-architecture-brownfield.md` → v1.1: added a top-of-doc Reconciliation Note (mirrors the review-report remediation-banner convention); struck through the Delta Summary row, the migration-plan line, and the Technical Decision row that assumed no catalog change, each with an "actual" replacement — original text preserved, not deleted ✅
+- [x] `docs/architecture/current/00-system-overview.md` and `01-full-system-deep-dive.md` (current-state snapshots, not decision records): updated entry counts (150→162) and the `Gift_Ideas_Database.xlsx` → `Gift_Ideas_Database-V1.xlsx` provenance directly, since these describe present reality rather than a historical decision ✅
+- [x] Synced both diagram-preview files to match their corrected source docs verbatim ✅
+
+### Remediation (Story 4.1 code review)
+
+**Owner**: AIRE_DEV
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Remediation plan confirmed with user: fix ISS-001 (Medium, non-mandatory) rather than defer ✅
+- [x] TDD-equivalent verification (no pytest suite exists for this standalone script): reproduced the bug via direct invocation (bare `IndexError`), confirmed red state ✅
+- [x] Applied the fix — clean `SystemExit` matching the file's existing `_parse_age` pattern ✅
+- [x] Re-verified: out-of-range index, non-numeric index, and the happy path all behave correctly ✅
+- [x] Full suite re-run: 150/150 passing, lint clean, coverage 96.48% (unchanged) ✅
+- [x] `docs/reviews/story-4.1-code-review-v1.md` updated in place: top banner ✅ Resolved, per-issue Resolution block, appended Remediation Section ✅
+
+### Review (Story 4.1)
+
+**Owner**: AIRE_REVIEWER
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] INITIAL_REVIEW mode (no prior review existed for story 4.1) ✅
+- [x] Independently re-read the full diff (`git diff --stat` + full diffs) rather than trusting the self-review alone ✅
+- [x] Reviewed against SOLID, Clean Architecture, testing, security, and pattern-adherence checklists ✅
+- [x] Found ISS-001 🟡 Medium (`convert-gift-catalog.py`'s new shared-string resolution lacks the script's own established clean-failure pattern — echoes Story 3.1's ISS-001) — non-blocking ✅
+- [x] **Result: ⚠️ APPROVED WITH COMMENTS** — `docs/reviews/story-4.1-code-review-v1.md` ✅
+
+### Story 4.1: Expanded Relationship Options (DEV)
+
+**Owner**: AIRE_DEV
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Data source update: fixed `scripts/convert-gift-catalog.py` to support the shared-strings XLSX format; regenerated `src/data/giftCatalog.json` from user-supplied `Gift_Ideas_Database-V1.xlsx` (150 → 162 entries, additive only) ✅
+- [x] Flagged to user: V1 spreadsheet already includes 12 dedicated entries tagged for the 6 new relationships, overtaking the "rely on All-tagged entries only" architecture decision — proceeded since it's strictly additive ✅
+- [x] TDD: wrote failing tests first (17 failures confirmed red state), then implemented ✅
+- [x] `RELATIONSHIPS` widened to 12 values in `src/domain/entities/GiftRecommendation.ts` ✅
+- [x] `GiftForm.tsx` fixed to import `RELATIONSHIPS` instead of its hardcoded duplicate ✅
+- [x] Found and fixed a second duplicate relationship list in `gift-catalog-loader.test.ts` (not in original story scope) ✅
+- [x] Full suite: 150/150 tests passing (up from 128), lint 0 errors, typecheck 0 errors, coverage 96.48% (≥85% gate) ✅
+- [x] Real build + start + curl live verification: new relationship value → 200 + 3 recommendations; invalid value → 400 listing all 12 ✅
+- [x] DoD Compliance Gates 1-3 passed — `docs/stories-implemented/story-4.1-review.md` ✅
+- [x] Deviation documented: `giftCatalog.json` was modified (by the data-source update, not story code) — recommend reconciling `docs/architecture/design/02-target-architecture-brownfield.md` and `docs/requirements.md` ✅
+
+### Implementation Plan (Epic 4: Expanded Relationship Options)
+
+**Owner**: AIRE_PRODUCT_OWNER
+**Status**: ✅ Done
+**Started**: 2026-09-23
+**Completed**: 2026-09-23
+
+**Progress**:
+- [x] Prerequisites confirmed: requirements v1.1, system overview, deep-dive, target architecture, and patterns & standards docs all present ✅
+- [x] Numbering confirmed with user: Epic 4, Story 4.1 (continues sequentially after Epic 3's last story, 3.3) ✅
+- [x] Build cycle confirmed with user: NO-CYCLE (same precedent as Epic 3) ✅
+- [x] Vertical Slice Planning used (no Jira Stories table in requirements.md) — single self-contained story, dependency-graph.yml not required (only mandatory for 2+ new stories) ✅
+- [x] Story 4.1 authored to the full Authoring Depth Standard (User Journey, Flow Diagram, RBAC sentinel, System responses table, QA-observable behaviour, code-backed Implementation Steps and Tests) and approved by user ✅
+- [x] `docs/plans/implementation-plan.md` updated: Epic 4 index entry, Dependency Graph diagram note, new QA Manual Testing Groups section ✅
+- [x] Tracker sync: user chose to skip (keep local, consistent with `**Tracking**: Local`) ✅
+
+### Patterns & Standards (Expanded Relationship Options)
+
+**Owner**: AIRE_ARCHITECT
+**Status**: ✅ Done
+**Started**: 2026-09-22
+**Completed**: 2026-09-22
+
+**Progress**:
+- [x] Phase 1/2a: Extracted existing patterns from deep-dive; scanned for duplicate shared code — confirmed `GiftForm.tsx`'s hardcoded `RELATIONSHIPS` duplicate as the one finding ✅
+- [x] Phase 2: Loaded `SPEC/rulebooks/aire-design-patterns.md` ✅
+- [x] Phase 3: Compared all 8 pattern categories vs. recommended — 7 already matched (fast-pathed per the workflow's "Special case" rule), 1 gap found (UI/shared code duplication) and confirmed [N] New adoption with user ✅
+- [x] Phase 4-7: Documented project structure, coding patterns (error handling, logging, DB N/A, API design, config), testing patterns, documentation standards — all marked [Current — kept] except the one adoption, each with DO/DON'T examples ✅
+- [x] Phase 7.5: File/Module Boundary Map completed — 2 files modified, 3 unchanged, zero shared/cross-concern files for this change set ✅
+- [x] Phase 8: `docs/architecture/design/03-patterns-and-standards-brownfield.md` written and approved ✅
+
+### Target Architecture (Expanded Relationship Options)
+
+**Owner**: AIRE_ARCHITECT
+**Status**: ✅ Done
+**Started**: 2026-09-22
+**Completed**: 2026-09-22
+
+**Progress**:
+- [x] Reference check: `SPEC/references/` empty; `docs/helix/INDEX.md` has no additional documents ✅
+- [x] Phase 0: Loaded system overview, deep-dive, and requirements v1.1; presented Impact Analysis (2 files modified, 0 new modules, 0 DB/API breaking changes) ✅
+- [x] Phase 1: Design decisions — no new technology needed; existing architecture style (layered monolith, DI-factory pattern) extended, no deviation ✅
+- [x] Phase 2: Target state design — target context/component diagrams (annotated new vs modified vs unchanged), no data migration (no DB), API change confirmed additive/non-breaking, no security impact (no RBAC in this system) ✅
+- [x] Phase 3: Documentation — `docs/architecture/design/02-target-architecture-brownfield.md` + diagram preview written, with 3 documented technical decisions and rationale ✅
+
+### Requirements (Amendment — Expanded Relationship Options)
+
+**Owner**: AIRE_ANALYST_PM_BROWNFIELD
+**Status**: ✅ Done
+**Started**: 2026-09-22
+**Completed**: 2026-09-22
+
+**Progress**:
+- [x] Reference check: `SPEC/references/` empty; `docs/helix/INDEX.md` has no additional documents ✅
+- [x] Grounded the request in the current-state deep-dive: confirmed `RELATIONSHIPS` canonical source, `GiftForm.tsx`'s duplicated hardcoded array, and catalog relationship-tag distribution (75/150 entries tagged `"All"`) ✅
+- [x] Clarified with user: Title Case wording, add-alongside (12 total), rely on existing `"All"`-tagged catalog entries (no data changes) ✅
+- [x] Decided (with user) to amend `docs/requirements.md` in place rather than fully regenerate, preserving the original project-wide requirements content ✅
+- [x] Amended `docs/requirements.md` (v1.0 → v1.1): Success/Failure Criteria, Technical Constraints, Quality Gates, Explicit Scope, Assumptions ✅
+
+### Deep-Dive (Full System)
+
+**Owner**: AIRE_ARCHITECT
+**Status**: ✅ Done
+**Started**: 2026-09-22
+**Completed**: 2026-09-22
+
+**Progress**:
+- [x] Phase 1: Module analysis — all 28 non-test source files across presentation/API/application/domain/infrastructure/lib mapped ✅
+- [x] Phase 2: Flow analysis — 3 sequence diagrams (happy path, rate-limited/error path, client health check) ✅
+- [x] Phase 3: Data analysis — no database; documented `GiftCatalogEntry`, `GiftSuggestionRequest`, `GiftRecommendation` shapes ✅
+- [x] Phase 4: Pattern extraction — error handling, logging, DI-based "data access", API response shape, naming conventions, testing patterns, each with code examples and file paths ✅
+- [x] Phase 5: Documentation — `docs/architecture/current/01-full-system-deep-dive.md` written ✅
+- [x] Phase 6: Diagram preview — `docs/architecture-diagrams/01-full-system-deep-dive-diagrams.md` created ✅
+- [x] Found dead code: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites — leftover from the retired AI-provider adapter ✅
 
 ### Review
 
@@ -159,6 +346,7 @@
 | NO-CYCLE | 3.1 | Gift Catalog Data & Domain Model | 2026-09-18 | 2026-09-18 | 2026-09-18 00:00 |
 | NO-CYCLE | 3.2 | Catalog Matching Service | 2026-09-18 | 2026-09-18 | 2026-09-18 00:00 |
 | NO-CYCLE | 3.3 | Wire In Catalog Provider & Retire the AI Adapter | 2026-09-18 | 2026-09-18 | 2026-09-18 00:00 |
+| NO-CYCLE | 4.1 | Expanded Relationship Options | 2026-09-23 | 2026-09-23 | 2026-09-23 01:00 |
 
 **Remediation Started (2026-09-17)**: Stories 2.1, 2.2, 2.3 — remediating `docs/reviews/all-stories-code-review-v1.md` (HIGH-001, MEDIUM-001..004, LOW-001..003)
 **Remediation Ended (2026-09-17)**: Stories 2.1, 2.2, 2.3 — all 8 findings fixed, 91/91 tests passing, coverage 95.77%; awaiting focused re-review
@@ -187,10 +375,10 @@
 
 | Metric | Target | Current | Status | Recorded |
 |--------|--------|---------|--------|----------|
-| Unit Test Coverage | ≥85% | 96.47% (full suite) | ✅ | 2026-09-18 00:00 |
-| Integration Tests | 100% pass | 16/16 test files, 128/128 tests | ✅ | 2026-09-18 00:00 |
-| Code Review | All stories | 9/9 stories reviewed; story 3.1 and story 3.3 both remediated (all ISS resolved) | ✅ | 2026-09-18 00:00 |
-| Documentation | All stories | 10/10 | ✅ | 2026-09-18 00:00 |
+| Unit Test Coverage | ≥85% | 96.48% (full suite) | ✅ | 2026-09-23 01:00 |
+| Integration Tests | 100% pass | 16/16 test files, 150/150 tests | ✅ | 2026-09-23 01:00 |
+| Code Review | All stories | 10/10 stories reviewed; story 3.1, 3.3, and 4.1 all remediated (all findings resolved) | ✅ | 2026-09-23 03:00 |
+| Documentation | All stories | 11/11 | ✅ | 2026-09-23 01:00 |
 
 ---
 
@@ -208,6 +396,46 @@
 
 ## Completed Steps
 
+- [x] **QA Regression (vs. 2026-09-18 baseline)**: 🟢 NO REGRESSIONS — 2026-09-23
+  - Evidence: `docs/testing/regression-report-2026-09-23.md`
+  - 128→150 tests (+22), coverage held/improved (96.47%→96.48%), zero new failures, every baseline requirement re-verified unaffected
+- [x] **QA Validation (Story 4.1)**: 🟢 PASS — READY FOR RELEASE — 2026-09-23
+  - Evidence: `docs/testing/validation-report-story-4.1-2026-09-23.md`
+  - 8/8 requirements traced with evidence; 150/150 automated tests + 3 independent live-server checks all passing; 0 bugs found; process note: implementation not yet committed to git
+- [x] **QA Test Plan (Story 4.1)**: Created — 2026-09-23
+  - Evidence: `docs/testing/test-plan-story-4.1.md`
+  - 14 scenarios across 8 traced requirements, covering the relationship widening, regression of the original 6, and the mid-implementation catalog data-source change
+- [x] **Documentation Reconciliation**: Catalog data source — 2026-09-23
+  - Evidence: `docs/requirements.md` (v1.2), `docs/architecture/design/02-target-architecture-brownfield.md` (v1.1), `docs/architecture/current/00-system-overview.md`, `docs/architecture/current/01-full-system-deep-dive.md`, both diagram-preview files
+  - All "150 entries" / "no catalog changes" statements corrected; decision-record docs use strikethrough + superseded notes (history preserved), current-state snapshots updated directly
+- [x] **Story 4.1 Remediation**: Complete (1/1 findings: ISS-001) — 2026-09-23
+  - Evidence: `docs/reviews/story-4.1-code-review-v1.md` (Remediation section + Resolution block)
+  - `convert-gift-catalog.py`'s shared-string lookup now raises a clean `SystemExit` on malformed/out-of-range indices, matching the file's existing `_parse_age` pattern. Tests: 150/150 passing (unaffected), coverage 96.48%, lint clean
+- [x] **Story 4.1 Code Review**: ⚠️ APPROVED WITH COMMENTS — 2026-09-23
+  - Evidence: `docs/reviews/story-4.1-code-review-v1.md`
+  - ISS-001 🟡 Medium (conversion script's new shared-string resolution lacks clean-failure error handling, echoing Story 3.1's ISS-001) — non-blocking; 0 blockers, 0 high
+- [x] **Story 4.1**: Expanded Relationship Options — 2026-09-23
+  - Evidence: `docs/stories-implemented/story-4.1-review.md`
+  - Tests: 150/150 passing (full suite, up from 128), coverage 96.48%, lint/typecheck clean, DoD gates 1-3 passed (9/9 AC covered)
+  - Also updated the gift catalog data source (`Gift_Ideas_Database-V1.xlsx` → 162 entries, additive) and fixed the conversion script to support shared-strings XLSX; fixed a second duplicate relationship list in `gift-catalog-loader.test.ts`
+- [x] **Implementation Plan**: Epic 4 (Expanded Relationship Options) — 2026-09-23
+  - Evidence: `docs/plans/implementation-plan.md`, `docs/plans/stories/epic-4-story-4.1-expanded-relationship-options.md`
+  - 1 story planned (4.1), NO-CYCLE, root-independent (`requires: []`); tracker sync skipped (local tracking)
+- [x] **Patterns & Standards**: Expanded relationship options — 2026-09-22
+  - Evidence: `docs/architecture/design/03-patterns-and-standards-brownfield.md`
+  - 7/8 pattern categories already matched recommended practice (no migration); 1 adoption confirmed: consolidate `RELATIONSHIPS` to a single canonical source, closing the `GiftForm.tsx` duplication
+- [x] **Target Architecture**: Expanded relationship options — 2026-09-22
+  - Evidence: `docs/architecture/design/02-target-architecture-brownfield.md`, `docs/architecture-diagrams/02-target-architecture-diagrams-brownfield.md`
+  - Delta: 2 files modified (`GiftRecommendation.ts`, `GiftForm.tsx`), 0 new modules, 0 DB migration, 1 non-breaking API contract widening (relationship enum 6→12)
+- [x] **Requirements Amendment**: Expanded relationship options (v1.0 → v1.1) — 2026-09-22
+  - Evidence: `docs/requirements.md`
+  - Added 6 relationship options (Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot) alongside the existing 6; requires fixing `GiftForm.tsx`'s hardcoded relationship list to import the canonical `RELATIONSHIPS` source; no catalog data changes needed
+- [x] **Deep-Dive (Full System)**: Done — 2026-09-22
+  - Evidence: `docs/architecture/current/01-full-system-deep-dive.md`, `docs/architecture-diagrams/01-full-system-deep-dive-diagrams.md`
+  - Component breakdown, 3 sequence diagrams, data models (no DB), pattern catalog (error handling, logging, DI, API response shape, naming, testing) with code examples; found orphaned `ConcurrencyLimiter` dead code
+- [x] **System Discovery**: Done — 2026-09-22
+  - Evidence: `docs/architecture/current/00-system-overview.md`, `docs/architecture-diagrams/00-system-overview-diagrams.md`
+  - Verified against actual code (not the stale greenfield design doc); flagged that the design doc still describes a retired Claude-AI engine while the shipped code uses static catalog matching (Epic 3)
 - [x] **Project Tracking**: Local tracking initialized — 2026-09-16
   - Evidence: `docs/status.md`
 - [x] **Requirements**: Done — 2026-09-16
@@ -326,6 +554,10 @@
 1. **Push to GitHub**: user creates the remote repo and pushes the existing local commit; then connects it to Vercel via the dashboard
 2. **🔴 Security follow-up (tracked, not blocking)**: Upgrade `next` 13.5.11 → 16.x to resolve multiple known high/critical CVEs (unauthenticated RCE, SSRF, cache poisoning, auth bypass) found during pipeline setup. This is a dedicated upgrade project — App Router/middleware compatibility review, full re-test of all 128 tests plus the CSP-nonce/middleware work from Epic 1-2 — not a routine dependency bump. `dependency-audit` CI job is currently `continue-on-error: true` pending this.
 3. **Architecture decision**: Raise NEW-002's remaining serverless-state gap (in-memory rate limiter vs. Vercel's serverless model) with ARCHITECT/PRODUCT_OWNER — not a DEV code-fix item; the rate limiter survived Epic 3 unchanged (only the concurrency limiter/timeout retired with the AI adapter). This is now directly relevant since Vercel is the confirmed deployment target.
+4. **Reconcile stale design doc**: `docs/architecture/design/00-system-architecture-greenfield.md` describes a Claude-AI-based engine that no longer exists in code — mark it superseded or update it to match `docs/architecture/current/00-system-overview.md`.
+5. **Remove or repurpose dead code**: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites (leftover from the retired AI-provider adapter).
+6. **Commit and push Story 4.1**: the entire implementation (code + docs) is still uncommitted in git — flagged as a process note in QA's validation report. Nothing here can ship until it's committed.
+7. Still open (pre-existing, unrelated to Epic 4): the `next@13.5.11` CVE upgrade (see Blockers) and `ConcurrencyLimiter` dead-code cleanup in `src/lib/rateLimiter.ts`.
 
 ---
 
@@ -357,4 +589,18 @@
 | DEVOPS | Discovery complete — Vercel target confirmed, git initialized | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | DEVOPS | CI/CD pipeline built; flagged next@13.5.11 production CVEs (NEXTJS-CVE) | Standby | 2026-09-18 | 2026-09-18 00:00 |
 | DEVOPS | Deploy setup complete — deployment plan, architecture, and Vercel-appropriate runbooks (deploy/rollback/troubleshoot/quick-reference); server/Terraform/SSL phases skipped as inapplicable to Vercel | Idle | 2026-09-18 | 2026-09-18 00:00 |
+| ARCHITECT | System Discovery complete — `docs/architecture/current/00-system-overview.md` + diagram preview; flagged design/code drift (retired AI engine vs. shipped catalog matching) | Idle | 2026-09-22 | 2026-09-22 00:00 |
+| ARCHITECT | Full-system Deep-Dive complete — `docs/architecture/current/01-full-system-deep-dive.md` + diagram preview; found orphaned `ConcurrencyLimiter` dead code | Idle | 2026-09-22 | 2026-09-22 01:00 |
+| ANALYST_PM_BROWNFIELD | Amended `docs/requirements.md` (v1.1) for 6 new relationship options, grounded in deep-dive findings | Idle | 2026-09-22 | 2026-09-22 02:00 |
+| ARCHITECT | Target architecture complete — `docs/architecture/design/02-target-architecture-brownfield.md` + diagram preview; minimal additive delta (2 files modified, no new modules/DB/breaking API changes) | Idle | 2026-09-22 | 2026-09-22 03:00 |
+| ARCHITECT | Patterns & Standards complete — `docs/architecture/design/03-patterns-and-standards-brownfield.md`; 7/8 categories kept as-is, 1 adoption (consolidate RELATIONSHIPS) confirmed with user | Idle | 2026-09-22 | 2026-09-22 04:00 |
+| PRODUCT_OWNER | Implementation plan complete — Epic 4 / Story 4.1 (Expanded Relationship Options) written and approved; tracker sync skipped (local) | Idle | 2026-09-23 | 2026-09-23 00:00 |
+| DEV | Story 4.1 complete — 150/150 tests passing, 96.48% coverage, catalog data source updated (150→162 entries), DoD gates 1-3 passed | Idle | 2026-09-23 | 2026-09-23 01:00 |
+| REVIEWER | Reviewed story 4.1; APPROVED WITH COMMENTS (ISS-001 🟡) | Idle | 2026-09-23 | 2026-09-23 02:00 |
+| DEV | Remediated story-4.1-code-review-v1.md (ISS-001 resolved) | Idle | 2026-09-23 | 2026-09-23 03:00 |
+| ARCHITECT | Reconciled requirements/architecture docs with the actual catalog data source change (v1.2 / v1.1) | Idle | 2026-09-23 | 2026-09-23 04:00 |
+| QA | Test plan created for story 4.1 — `docs/testing/test-plan-story-4.1.md` (14 scenarios, 8 requirements) | Active | 2026-09-23 | 2026-09-23 05:00 |
+| QA | Full validation complete (Story 4.1) — PASS, 0 bugs found | Idle | 2026-09-23 | 2026-09-23 06:00 |
+| QA | Regression vs. 2026-09-18 baseline complete — 0 regressions, release path clear | Idle | 2026-09-23 | 2026-09-23 07:00 |
+| DEVOPS | Reconfirmed discovery-report.md still accurate post-Epic-4 — no new deps/env vars/secrets, no re-discovery needed | Idle | 2026-09-23 | 2026-09-23 08:00 |
 

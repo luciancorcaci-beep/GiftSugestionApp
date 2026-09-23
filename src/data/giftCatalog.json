@@ -2691,5 +2691,233 @@
       "Parent"
     ],
     "priceRangeUsd": "$30-$60"
+  },
+  {
+    "giftId": "G151",
+    "name": "Fake Lottery Ticket Prank Pack",
+    "description": "A prank set of scratch-off tickets that “win” outrageously over-the-top fake prizes.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "prank",
+      "joke",
+      "gag gift",
+      "funny",
+      "white elephant"
+    ],
+    "minRecipientAge": 12,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Mortal Enemy",
+      "Frenemy"
+    ],
+    "priceRangeUsd": "$8-$15"
+  },
+  {
+    "giftId": "G152",
+    "name": "“World's Okayest” Mug",
+    "description": "Ceramic mug printed with a deadpan, backhanded compliment for the desk.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "mug",
+      "sarcastic",
+      "office humor",
+      "gag gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Coworker I Tolerate",
+      "Frenemy"
+    ],
+    "priceRangeUsd": "$10-$18"
+  },
+  {
+    "giftId": "G153",
+    "name": "Regifting Wrapping Paper Roll",
+    "description": "Wrapping paper printed with a knowing “you know what this is” pattern.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "regift",
+      "joke",
+      "wrapping paper",
+      "gag gift"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Secret Santa Victim",
+      "Frenemy"
+    ],
+    "priceRangeUsd": "$6-$12"
+  },
+  {
+    "giftId": "G154",
+    "name": "Emergency Fruitcake Tin",
+    "description": "A dense, extremely long-lasting fruitcake that nobody actually asked for.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "fruitcake",
+      "holiday joke",
+      "gag gift",
+      "white elephant"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Mortal Enemy",
+      "Person Whose Name I Forgot"
+    ],
+    "priceRangeUsd": "$10-$20"
+  },
+  {
+    "giftId": "G155",
+    "name": "Ironic Office Motivational Poster",
+    "description": "A framed desk poster with a sarcastic twist on classic motivational slogans.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "office humor",
+      "poster",
+      "sarcasm",
+      "desk decor"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 70,
+    "relationshipTags": [
+      "Coworker I Tolerate",
+      "Boss I Need to Impress"
+    ],
+    "priceRangeUsd": "$12-$25"
+  },
+  {
+    "giftId": "G156",
+    "name": "Generic Gift Card Multi-Pack",
+    "description": "Assorted small-denomination gift cards for when you're not sure what they like — or who they are.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "gift card",
+      "safe choice",
+      "generic",
+      "last-minute"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Person Whose Name I Forgot",
+      "Secret Santa Victim"
+    ],
+    "priceRangeUsd": "$10-$50"
+  },
+  {
+    "giftId": "G157",
+    "name": "Premium Pen & Notepad Set",
+    "description": "A polished pen-and-notepad set that reads as thoughtful without getting personal.",
+    "interestCategory": "Office & Professional",
+    "keywords": [
+      "office",
+      "professional",
+      "desk accessory",
+      "stationery"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Boss I Need to Impress",
+      "Coworker I Tolerate"
+    ],
+    "priceRangeUsd": "$25-$50"
+  },
+  {
+    "giftId": "G158",
+    "name": "Engraved Desk Nameplate",
+    "description": "A nameplate engraved with a name and title, useful for looking put-together at an office gift exchange.",
+    "interestCategory": "Office & Professional",
+    "keywords": [
+      "office",
+      "professional",
+      "personalized gift",
+      "desk"
+    ],
+    "minRecipientAge": 20,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Boss I Need to Impress"
+    ],
+    "priceRangeUsd": "$20-$40"
+  },
+  {
+    "giftId": "G159",
+    "name": "“Thinking of You (Sort Of)” Card Box",
+    "description": "A boxed set of blank greeting cards with dry, noncommittal messages for any occasion.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "greeting card",
+      "humor",
+      "noncommittal",
+      "blank card"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Frenemy",
+      "Person Whose Name I Forgot"
+    ],
+    "priceRangeUsd": "$8-$15"
+  },
+  {
+    "giftId": "G160",
+    "name": "Passive-Aggressive Succulent",
+    "description": "A low-maintenance succulent that “won't judge you back,” paired with a snarky care tag.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "plant",
+      "passive aggressive",
+      "office humor",
+      "succulent"
+    ],
+    "minRecipientAge": 16,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Frenemy",
+      "Mortal Enemy"
+    ],
+    "priceRangeUsd": "$12-$22"
+  },
+  {
+    "giftId": "G161",
+    "name": "White Elephant Mystery Box",
+    "description": "A grab-bag box of odd, mismatched novelty items, built for a white elephant exchange.",
+    "interestCategory": "Novelty & Gag Gifts",
+    "keywords": [
+      "white elephant",
+      "mystery gift",
+      "party game",
+      "novelty"
+    ],
+    "minRecipientAge": 14,
+    "maxRecipientAge": 90,
+    "relationshipTags": [
+      "Secret Santa Victim",
+      "Coworker I Tolerate"
+    ],
+    "priceRangeUsd": "$10-$20"
+  },
+  {
+    "giftId": "G162",
+    "name": "Gourmet Popcorn Tin (Boss Edition)",
+    "description": "An upscale tin of gourmet popcorn flavors, dressed up enough to hand to a boss.",
+    "interestCategory": "Cooking & Food",
+    "keywords": [
+      "popcorn",
+      "gourmet",
+      "office gift",
+      "snack"
+    ],
+    "minRecipientAge": 18,
+    "maxRecipientAge": 80,
+    "relationshipTags": [
+      "Boss I Need to Impress",
+      "Coworker I Tolerate"
+    ],
+    "priceRangeUsd": "$20-$35"
   }
 ]

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { ValidationError } from '@/lib/errors';
 import { validateGiftInput } from '@/application/validation/validateGiftInput';
 import type { GiftSuggestionRequest } from '@/application/dto/GiftSuggestionRequest';
+import { RELATIONSHIPS } from '@/domain/entities/GiftRecommendation';
 
 const validInput = {
   recipientAge: '28',
@@ -45,7 +46,27 @@ describe('validateGiftInput', () => {
 
   it('rejects an unsupported relationship before provider code can receive it', () => {
     expect(() => validateGiftInput({ ...validInput, relationship: 'Coworker' })).toThrowError(
-      new ValidationError('Relationship must be one of: Friend, Partner, Parent, Child, Sibling, Colleague'),
+      new ValidationError(`Relationship must be one of: ${RELATIONSHIPS.join(', ')}`),
+    );
+  });
+
+  it('accepts every one of the 12 supported relationship values', () => {
+    expect(RELATIONSHIPS).toHaveLength(12);
+    for (const relationship of RELATIONSHIPS) {
+      expect(() => validateGiftInput({ ...validInput, relationship })).not.toThrow();
+    }
+  });
+
+  it.each([
+    'Mortal Enemy', 'Frenemy', 'Coworker I Tolerate',
+    'Secret Santa Victim', 'Boss I Need to Impress', 'Person Whose Name I Forgot',
+  ])('accepts the newly added relationship value "%s"', (relationship) => {
+    expect(() => validateGiftInput({ ...validInput, relationship })).not.toThrow();
+  });
+
+  it('rejects an unsupported relationship with a message listing all 12 values', () => {
+    expect(() => validateGiftInput({ ...validInput, relationship: 'Coworker' })).toThrowError(
+      new ValidationError(`Relationship must be one of: ${RELATIONSHIPS.join(', ')}`),
     );
   });
 

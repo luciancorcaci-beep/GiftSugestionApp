@@ -5,6 +5,12 @@ export const RELATIONSHIPS = [
   'Child',
   'Sibling',
   'Colleague',
+  'Mortal Enemy',
+  'Frenemy',
+  'Coworker I Tolerate',
+  'Secret Santa Victim',
+  'Boss I Need to Impress',
+  'Person Whose Name I Forgot',
 ] as const;
 
 export type Relationship = (typeof RELATIONSHIPS)[number];

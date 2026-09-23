@@ -1,9 +1,9 @@
 # Requirements - What Gift Should I Choose
 
-**Date**: 2026-09-16  
-**Author**: ANALYST_PM_GREENFIELD  
+**Date**: 2026-09-23 (amended)  
+**Author**: ANALYST_PM_GREENFIELD (original), ANALYST_PM_BROWNFIELD (2026-09-22 amendment), ARCHITECT (2026-09-23 reconciliation)  
 **Status**: Approved  
-**Version**: 1.0
+**Version**: 1.2
 
 ---
 
@@ -62,12 +62,13 @@ People often struggle to decide what to buy for friends, family, or colleagues. 
 3. Each recommendation is understandable and clearly tied to the user-provided context.
 4. The app responds quickly enough for a clear interactive user experience.
 5. The recommendations are relevant and usable without requiring the user to refine the prompt repeatedly.
-6. Relationship options include: Friend, Partner, Parent, Child, Sibling, and Colleague.
+6. Relationship options include 12 values: Friend, Partner, Parent, Child, Sibling, Colleague, Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot. _(Amended 2026-09-22 — added 6 humorous relationship options to the original 6.)_
 
 ### Measurable Outcomes
 - Exactly 3 recommendations are generated for each request.
 - Recommendations are based on the required structured inputs: age, budget, relationship, and interests.
-- Relationship selection supports the full required list: Friend, Partner, Parent, Child, Sibling, Colleague.
+- Relationship selection supports the full required list of 12 values (see above), sourced from a single canonical list shared by validation and the UI dropdown.
+- Selecting any of the 6 new relationship values and submitting a valid request still returns exactly 3 recommendations (no regression). _(Reconciled 2026-09-23)_ This is now backed by two overlapping guarantees rather than one: the 75 relationship-agnostic ("All") entries out of the original 150 still provide a fallback for any relationship value, **and** the catalog (now 162 entries, via `Gift_Ideas_Database-V1.xlsx`) additionally includes 12 entries specifically tagged for the 6 new relationships — see the amended Technical Constraints below.
 - The app can be used from a browser without additional installation or setup.
 
 ---
@@ -78,7 +79,8 @@ The project will be considered unsuccessful if any of the following occurs:
 
 - The app produces no useful recommendations or not exactly 3 suggestions.
 - Recommendations are generic, unrelated, or clearly ignore the entered age, budget, relationship, or interests.
-- The form does not support the required relationship options.
+- The form does not support the required relationship options (all 12, including the 6 added 2026-09-22).
+- The relationship list diverges between the UI and backend validation (i.e., the two are not sourced from one canonical list).
 - The app takes too long to provide meaningful output for a normal user interaction.
 - The application requires complex setup or external dependencies in a way that prevents normal use.
 
@@ -92,6 +94,8 @@ The project will be considered unsuccessful if any of the following occurs:
 - The delivery should remain lightweight and suitable for an MVP.
 - No hard security or multi-user authorization constraints are required for the initial version.
 - The product should work without requiring advanced infrastructure or enterprise systems.
+- _(Amended 2026-09-22)_ The relationship option list must have a single canonical source (`RELATIONSHIPS` in `src/domain/entities/GiftRecommendation.ts`) consumed by both backend validation and the UI dropdown — `GiftForm.tsx` currently hardcodes a duplicate array, which must be replaced with an import from the canonical list as part of this change to prevent the two lists from drifting apart.
+- _(Amended 2026-09-22; superseded 2026-09-23)_ ~~No gift catalog data changes are required for the new relationship options — they rely on the 75 existing `"All"`-tagged catalog entries for relationship-eligible matches; no new catalog entries or relationship tags are added as part of this change.~~ **Superseded**: an updated source spreadsheet (`Gift_Ideas_Database-V1.xlsx`) was supplied before implementation, adding 12 dedicated entries tagged for the 6 new relationships (162 entries total, up from 150 — the original 150 are byte-identical/unchanged). This is a strict improvement (dedicated coverage in addition to the `"All"`-tag fallback, not instead of it) and required no code change beyond regenerating `src/data/giftCatalog.json` via `scripts/convert-gift-catalog.py` (which was also fixed to support the new file's shared-strings XLSX format). See `docs/stories-implemented/story-4.1-review.md` (Deviations) and `docs/reviews/story-4.1-code-review-v1.md`.
 
 ---
 
@@ -100,9 +104,9 @@ The project will be considered unsuccessful if any of the following occurs:
 - Core user flow must generate exactly 3 relevant gift suggestions.
 - Recommendations must be based on user input rather than random output.
 - The form must include fields for recipient age, budget, relationship, and interests.
-- Relationship options must include: Friend, Partner, Parent, Child, Sibling, and Colleague.
+- Relationship options must include all 12 values: Friend, Partner, Parent, Child, Sibling, Colleague, Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot.
 - The app should have handling for empty or partial user input without crashing.
-- Basic test coverage should exist for the recommendation generation and input validation paths.
+- Basic test coverage should exist for the recommendation generation and input validation paths, including the 6 newly added relationship values (validation acceptance + catalog matching still returns exactly 3 recommendations).
 
 ---
 
@@ -111,12 +115,14 @@ The project will be considered unsuccessful if any of the following occurs:
 ### In Scope
 - User enters the recipient's age
 - User enters the budget for the gift
-- User selects the relationship type from the required list
+- User selects the relationship type from the required list (12 values, see Success Criteria)
 - User provides a text box for interests or preferences
 - Application generates exactly three suitable gift suggestions
 - Recommendations are selected from a curated gift-idea catalog by matching age, relationship, and interests
 - Basic browser-based UI for an MVP
 - Simple validation and reload-safe interaction
+- _(Amended 2026-09-22)_ Add 6 new relationship options (Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot) to the canonical `RELATIONSHIPS` list, backend validation, and the UI dropdown
+- _(Amended 2026-09-22)_ Fix `GiftForm.tsx`'s hardcoded, duplicated relationship array to instead import from the canonical `RELATIONSHIPS` source, so the UI and backend can never drift apart again
 
 ### Out of Scope
 - Full user authentication or account system
@@ -126,6 +132,8 @@ The project will be considered unsuccessful if any of the following occurs:
 - Advanced analytics dashboards
 - Custom recommendation tuning beyond the MVP flow
 - Multi-language support beyond the initial implementation
+- _(Amended 2026-09-22; superseded 2026-09-23 — see Technical Constraints)_ ~~Curating or adding gift catalog entries/relationship tags specific to the 6 new relationship options — they rely entirely on the existing 75 `"All"`-tagged catalog entries~~. **This was subsequently done anyway**, via a user-supplied updated spreadsheet (`Gift_Ideas_Database-V1.xlsx`), before implementation began — no story work targeted the catalog directly.
+- _(Amended 2026-09-22)_ Reordering or renaming the existing 6 relationship options
 
 ### Scope Boundary
 This project is limited to the gift suggestion experience only. It is not a marketplace, not a user management platform, and not a full commerce system.
@@ -148,7 +156,8 @@ This project is limited to the gift suggestion experience only. It is not a mark
 - The user enters enough details to form a reasonable recommendation using age, budget, relationship, and interests.
 - The recommendation engine can generate useful outcomes without a highly complex decision model.
 - The app is intended for a single-user, low-friction web experience.
-- Relationship values are limited to the required set: Friend, Partner, Parent, Child, Sibling, Colleague.
+- Relationship values are limited to the required set of 12: Friend, Partner, Parent, Child, Sibling, Colleague, Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot. _(Amended 2026-09-22)_
+- The 6 new relationship values are humorous/informal in tone by design (per user request) — no gift-catalog curation is assumed to distinguish "sincerity" of relationship when matching.
 
 ---
 

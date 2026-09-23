@@ -1,6 +1,6 @@
 # What Gift Should I Choose - Implementation Plan
 
-**Project**: What Gift Should I Choose | **Version**: 1.0 | **Created**: 2026-09-16
+**Project**: What Gift Should I Choose | **Version**: 1.1 | **Created**: 2026-09-16
 **Author**: ARCHITECT | **Status**: IN PROGRESS
 
 ---
@@ -18,6 +18,7 @@
 - Epic 1: Foundation - establish the walking skeleton across frontend and backend.
 - Epic 2: Recommendation engine - implement structured input validation and AI-driven suggestions.
 - Epic 3: Curated gift catalog - replace the AI-based recommendation engine with matching against a curated, bundled gift-idea dataset.
+- Epic 4: Expanded relationship options - add 6 new relationship values to the dropdown and consolidate the relationship list to a single canonical source.
 
 ---
 
@@ -35,7 +36,10 @@ graph TD
   B1 --> D1["3.1 Catalog data + model"]
   D1 --> D2["3.2 Catalog matching service"]
   D2 --> D3["3.3 Wire in + retire AI adapter"]
+  D3 -.independent, no code dependency.-> E1["4.1 Expanded relationship options"]
 ```
+
+> Story 4.1 is root-independent (`requires: []`) — the dotted edge above only shows that it builds on already-shipped Epic 3 code, not a blocking dependency. A formal `docs/plans/dependency-graph.yml` was not created for this plan update since it adds a single story (the YAML is mandatory only for 2+ new stories in one planning pass).
 
 ### Wave Workload Distribution (team_size: 2)
 
@@ -111,8 +115,31 @@ graph TD
 
 ---
 
+## EPIC 4: EXPANDED RELATIONSHIP OPTIONS
+
+**Owner**: DEV | **Goal**: Add 6 new relationship options to the gift form's dropdown and eliminate the hardcoded duplicate relationship list found during the brownfield deep-dive.
+
+**Prerequisites**: None (root-independent; builds on already-shipped Epic 1–3 code) | **Completion**: Dropdown shows 12 relationship options; all 12 validate and match correctly; the original 6 show no regression; no duplicate relationship list remains anywhere in `src/`.
+
+### Story 4.1: Expanded Relationship Options
+- Objective: Widen the canonical `RELATIONSHIPS` list to 12 values and fix `GiftForm.tsx` to import it instead of duplicating it.
+- File: `docs/plans/stories/epic-4-story-4.1-expanded-relationship-options.md`
+
+---
+
 ## Quality Gates
 
 **Per Story**: Follow project patterns, cover edge cases, and keep the app user-safe.
 **Per Epic**: Pass the feature test path and verify output is observable and usable.
 **Final**: App delivers the core recommendation flow with stable handling for empty and invalid input.
+
+---
+
+## QA Manual Testing Groups
+
+> Epics 1–3 predate this section (added starting with Epic 4); their manual test coverage is documented instead in `docs/testing/test-plan-full.md` and the validation reports under `docs/testing/`.
+
+### Epic 4: Expanded Relationship Options
+
+**Group 1** — Stories: 4.1
+Once Story 4.1 is done, QA can test the full relationship-selection flow end-to-end: open the form, confirm the Relationship dropdown shows exactly 12 options in canonical order (the original 6 plus Mortal Enemy, Frenemy, Coworker I Tolerate, Secret Santa Victim, Boss I Need to Impress, Person Whose Name I Forgot), select any new option alongside a valid age/budget/interests, submit, and confirm exactly 3 recommendation cards render — no different from submitting with an original relationship value. Also verify no regression on the original 6 values, and that submitting an unsupported relationship string directly against the API returns a 400 listing all 12 valid values. No catalog content changes to verify — the same 150 gift entries back every relationship value.

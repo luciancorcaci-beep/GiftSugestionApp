@@ -327,6 +327,15 @@ describe('CatalogRecommendationProvider (default constructor, real catalog)', ()
     }
   });
 
+  it.each([
+    'Mortal Enemy', 'Frenemy', 'Coworker I Tolerate',
+    'Secret Santa Victim', 'Boss I Need to Impress', 'Person Whose Name I Forgot',
+  ] as const)('still returns exactly three recommendations for the new relationship value "%s"', async (relationship) => {
+    const provider = new CatalogRecommendationProvider();
+    const result = await provider.generate({ ...validInput, relationship, interests: 'nomatch-xyz-check-all-fallback' });
+    expect(result).toHaveLength(3);
+  });
+
   it('only returns age-eligible entries, cross-checked against the real catalog', async () => {
     const provider = new CatalogRecommendationProvider();
     const catalog = loadGiftCatalog();

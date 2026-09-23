@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Convert the curated Gift_Ideas_Database.xlsx spreadsheet into the bundled
+Convert the curated Gift_Ideas_Database spreadsheet into the bundled
 src/data/giftCatalog.json used by the app at build/runtime.
 
 This is a one-time, standalone conversion utility. It is intentionally
@@ -10,16 +10,19 @@ Next.js app's package.json or runtime bundle (see Story 3.1, AC3).
 
 Usage:
     python3 scripts/convert-gift-catalog.py \
-        [path/to/Gift_Ideas_Database.xlsx] [path/to/src/data/giftCatalog.json]
+        [path/to/Gift_Ideas_Database-V1.xlsx] [path/to/src/data/giftCatalog.json]
 
-Both arguments are optional; they default to the spreadsheet at the repo
-root and src/data/giftCatalog.json relative to this script's location.
+Both arguments are optional; they default to Gift_Ideas_Database-V1.xlsx at
+the repo root and src/data/giftCatalog.json relative to this script's
+location.
 
 The .xlsx file is a zip archive of XML worksheet parts. The "Gifts" sheet
 (xl/worksheets/sheet2.xml, confirmed via xl/workbook.xml's <sheets> order)
-uses inline strings (no shared sharedStrings.xml part), so each text cell
-carries its value directly in an <is><t>...</t></is> element, and each
-numeric cell carries it in a <v>...</v> element.
+may store each text cell either inline (<is><t>...</t></is>, the original
+Gift_Ideas_Database.xlsx's format) or as an index into the workbook-level
+xl/sharedStrings.xml table (t="s", the standard Excel format and the one
+Gift_Ideas_Database-V1.xlsx uses). Both are supported here. Numeric cells
+carry their value directly in a <v>...</v> element in either case.
 """
 from __future__ import annotations
 
@@ -57,27 +60,59 @@ def _column_letter(cell_ref: str) -> str:
     return match.group()
 
 
-def _cell_text(cell: ET.Element) -> str:
-    """Return the textual value of a worksheet cell, handling both the
-    inline-string form (t="inlineStr") and the numeric form."""
+def _cell_text(cell: ET.Element, shared_strings: list[str]) -> str:
+    """Return the textual value of a worksheet cell, handling the
+    inline-string form (t="inlineStr"), the shared-string form (t="s" — an
+    index into shared_strings), and the plain numeric form."""
     inline = cell.find("m:is", NS)
     if inline is not None:
         text_el = inline.find("m:t", NS)
         return text_el.text if text_el is not None and text_el.text is not None else ""
 
     value_el = cell.find("m:v", NS)
-    return value_el.text if value_el is not None and value_el.text is not None else ""
+    raw_value = value_el.text if value_el is not None and value_el.text is not None else ""
+
+    if cell.get("t") == "s":
+        if not raw_value:
+            return ""
+        try:
+            index = int(raw_value)
+            return shared_strings[index]
+        except (ValueError, IndexError):
+            raise SystemExit(
+                f"Malformed shared-string reference {raw_value!r} in cell "
+                f"{cell.get('r')!r} — spreadsheet's sharedStrings.xml may be "
+                f"corrupted or out of sync with the worksheet."
+            ) from None
+
+    return raw_value
 
 
-def _row_values(row: ET.Element) -> dict[str, str]:
+def _row_values(row: ET.Element, shared_strings: list[str]) -> dict[str, str]:
     """Map each cell in a row to its column letter -> text value."""
     values: dict[str, str] = {}
     for cell in row.findall("m:c", NS):
         cell_ref = cell.get("r")
         if not cell_ref:
             continue
-        values[_column_letter(cell_ref)] = _cell_text(cell)
+        values[_column_letter(cell_ref)] = _cell_text(cell, shared_strings)
     return values
+
+
+def _read_shared_strings(archive: zipfile.ZipFile) -> list[str]:
+    """Read xl/sharedStrings.xml if present; return [] for workbooks (like
+    the original Gift_Ideas_Database.xlsx) that use inline strings only."""
+    if "xl/sharedStrings.xml" not in archive.namelist():
+        return []
+
+    root = ET.fromstring(archive.read("xl/sharedStrings.xml"))
+    strings: list[str] = []
+    for si in root.findall("m:si", NS):
+        # A shared string can be plain (<t>) or rich text (<r><t>...</t></r>+);
+        # concatenate all <t> runs to reconstruct the full text either way.
+        text_parts = [t.text or "" for t in si.findall(".//m:t", NS)]
+        strings.append("".join(text_parts))
+    return strings
 
 
 def _split_list(raw: str) -> list[str]:
@@ -86,6 +121,7 @@ def _split_list(raw: str) -> list[str]:
 
 def read_gift_rows(xlsx_path: Path) -> list[dict[str, str]]:
     with zipfile.ZipFile(xlsx_path) as archive:
+        shared_strings = _read_shared_strings(archive)
         sheet_xml = archive.read(GIFTS_SHEET_PART)
 
     root = ET.fromstring(sheet_xml)
@@ -97,7 +133,7 @@ def read_gift_rows(xlsx_path: Path) -> list[dict[str, str]]:
     if not rows:
         raise ValueError("Gifts sheet has no rows")
 
-    header_values = _row_values(rows[0])
+    header_values = _row_values(rows[0], shared_strings)
     header_by_column = {"A": "GiftID", "B": "GiftName", "C": "Description",
                          "D": "InterestCategory", "E": "Keywords",
                          "F": "MinRecipientAge", "G": "MaxRecipientAge",
@@ -111,7 +147,7 @@ def read_gift_rows(xlsx_path: Path) -> list[dict[str, str]]:
 
     data_rows: list[dict[str, str]] = []
     for row in rows[1:]:
-        values = _row_values(row)
+        values = _row_values(row, shared_strings)
         data_rows.append({header_by_column[col]: values.get(col, "") for col in "ABCDEFGHI"})
 
     return data_rows
@@ -154,7 +190,7 @@ def convert_row(row: dict[str, str]) -> dict:
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parent.parent
-    xlsx_path = Path(sys.argv[1]) if len(sys.argv) > 1 else repo_root / "Gift_Ideas_Database.xlsx"
+    xlsx_path = Path(sys.argv[1]) if len(sys.argv) > 1 else repo_root / "Gift_Ideas_Database-V1.xlsx"
     output_path = Path(sys.argv[2]) if len(sys.argv) > 2 else repo_root / "src" / "data" / "giftCatalog.json"
 
     if not xlsx_path.exists():

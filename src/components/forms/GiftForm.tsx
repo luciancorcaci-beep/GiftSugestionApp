@@ -6,11 +6,9 @@ import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/shared/Input';
 import { Select } from '@/components/shared/Select';
 import { GiftResults, isGiftRecommendationResponse } from '@/components/results/GiftResults';
-import type { GiftRecommendation, GiftRecommendationResponse } from '@/domain/entities/GiftRecommendation';
+import { RELATIONSHIPS, type GiftRecommendation, type GiftRecommendationResponse } from '@/domain/entities/GiftRecommendation';
 import { validateGiftInput } from '@/application/validation/validateGiftInput';
 import { ValidationError } from '@/lib/errors';
-
-const relationships = ['Friend', 'Partner', 'Parent', 'Child', 'Sibling', 'Colleague'] as const;
 
 export type GiftFormValues = {
   age: string;
@@ -138,7 +136,7 @@ export function GiftForm() {
           label="Relationship"
           name="relationship"
           placeholder="Choose a relationship"
-          options={relationships.map((relationship) => ({ label: relationship, value: relationship }))}
+          options={RELATIONSHIPS.map((relationship) => ({ label: relationship, value: relationship }))}
           value={values.relationship}
           aria-invalid={Boolean(hasSubmitted && !values.relationship)}
           onChange={(event) => updateValue('relationship', event.target.value)}

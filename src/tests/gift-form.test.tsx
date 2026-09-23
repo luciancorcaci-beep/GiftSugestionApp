@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { GiftForm, getGiftFormError, submitGiftSuggestions } from '@/components/forms/GiftForm';
 import HomePage from '@/app/page';
+import { RELATIONSHIPS } from '@/domain/entities/GiftRecommendation';
 
 describe('GiftForm', () => {
   it('renders the required accessible fields', () => {
@@ -22,9 +23,18 @@ describe('GiftForm', () => {
   it('includes every supported relationship option', () => {
     const markup = renderToStaticMarkup(<GiftForm />);
 
-    for (const relationship of ['Friend', 'Partner', 'Parent', 'Child', 'Sibling', 'Colleague']) {
+    expect(RELATIONSHIPS).toHaveLength(12);
+    for (const relationship of RELATIONSHIPS) {
       expect(markup).toContain(`>${relationship}</option>`);
     }
+  });
+
+  it.each([
+    'Mortal Enemy', 'Frenemy', 'Coworker I Tolerate',
+    'Secret Santa Victim', 'Boss I Need to Impress', 'Person Whose Name I Forgot',
+  ])('renders the newly added relationship option "%s"', (relationship) => {
+    const markup = renderToStaticMarkup(<GiftForm />);
+    expect(markup).toContain(`>${relationship}</option>`);
   });
 
   it('renders a submit action with accessible live status support', () => {

@@ -230,4 +230,23 @@ describe('POST /api/gift-suggestions (catalog-backed)', () => {
     expect(response.status).toBe(200);
     expect(body.recommendations).toHaveLength(3);
   });
+
+  it('accepts a newly added relationship value end-to-end through the real handler', async () => {
+    const handler = createTestHandler();
+    const response = await handler(request({ ...catalogEligibleInput, relationship: 'Secret Santa Victim' }));
+    const body = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(body.recommendations).toHaveLength(3);
+  });
+
+  it('rejects an unsupported relationship with a message listing all 12 values, end-to-end', async () => {
+    const handler = createTestHandler();
+    const response = await handler(request({ ...catalogEligibleInput, relationship: 'Coworker' }));
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(body.error.code).toBe('VALIDATION_ERROR');
+    expect(body.error.message).toContain('Secret Santa Victim');
+  });
 });

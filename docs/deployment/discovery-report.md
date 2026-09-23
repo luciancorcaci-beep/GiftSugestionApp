@@ -4,6 +4,8 @@
 **Author**: DEVOPS Agent
 **Status**: Confirmed with user
 
+> **Reconfirmed 2026-09-23** (post Epic 4 / Story 4.1 — Expanded Relationship Options): re-checked against the current working tree. `package.json`, `package-lock.json`, and `.env.example` are all byte-identical to this report's baseline (`git diff` empty) — no new dependencies, no new environment variables, no new secrets, no new deployment target, no new external service. Everything in this report remains accurate as-is; no new discovery cycle was needed. The one open item is unrelated to discovery: the Story 4.1 implementation (code + docs) is not yet committed to git, so the "Git Repository" section below (last updated 2026-09-18, working tree clean at that time) is currently stale with respect to commit state — see `docs/status.md` Upcoming.
+
 ---
 
 ## Deployment Model

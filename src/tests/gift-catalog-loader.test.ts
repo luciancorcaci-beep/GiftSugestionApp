@@ -1,20 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
 import { loadGiftCatalog, type GiftCatalogEntry } from '@/infrastructure/catalog/giftCatalogLoader';
+import { RELATIONSHIPS } from '@/domain/entities/GiftRecommendation';
 
-const RELATIONSHIP_TAG_VALUES = new Set([
-  'All',
-  'Friend',
-  'Partner',
-  'Parent',
-  'Child',
-  'Sibling',
-  'Colleague',
-]);
+const RELATIONSHIP_TAG_VALUES = new Set<string>(['All', ...RELATIONSHIPS]);
 
 describe('loadGiftCatalog', () => {
-  it('returns exactly 150 entries', () => {
-    expect(loadGiftCatalog()).toHaveLength(150);
+  it('returns exactly 162 entries', () => {
+    expect(loadGiftCatalog()).toHaveLength(162);
   });
 
   it('has unique giftId values across all entries', () => {
@@ -29,7 +22,7 @@ describe('loadGiftCatalog', () => {
     expect(allEntry).toBeDefined();
   });
 
-  it('returns the same 150 entries on repeat calls (no mutation, no persistent state)', () => {
+  it('returns the same entries on repeat calls (no mutation, no persistent state)', () => {
     const first = loadGiftCatalog();
     const second = loadGiftCatalog();
     expect(second).toHaveLength(first.length);
