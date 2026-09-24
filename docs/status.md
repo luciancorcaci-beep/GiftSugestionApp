@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-09-25 01:00
-**Updated By**: DEV
+**Last Updated**: 2026-09-25 03:00
+**Updated By**: QA
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -42,6 +42,9 @@
 | DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-23 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` (reconfirmed valid + accurate post-Epic-4, no changes needed) | 2026-09-23 09:00 |
 | DevOps Deploy | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/deployment-plan.md`, `runbook-deploy.md`, `runbook-rollback.md`, `runbook-troubleshoot.md`, `architecture.md`, `quick-reference.md` (Vercel-scoped; server/Terraform/SSL phases skipped as inapplicable) | 2026-09-18 00:00 |
 | Review (Phase 1 Refactoring) | ✅ Done | AIRE_REVIEWER | 2026-09-25 | `docs/reviews/phase1-refactoring-code-review-v1.md` (✅ APPROVED — 2 comments remediated) | 2026-09-25 01:00 |
+| QA (Full — post Phase 1 Refactoring) | ✅ Done | AIRE_QA | 2026-09-25 | `docs/testing/validation-report-full-2026-09-25.md` (🟢 PASS — READY FOR RELEASE) | 2026-09-25 02:00 |
+| QA Regression (2026-09-25) | ✅ Done | AIRE_QA | 2026-09-25 | `docs/testing/regression-report-2026-09-25.md` (🟢 NO REGRESSIONS) | 2026-09-25 03:00 |
+| QA Triage (2026-09-25) | ✅ Done | AIRE_QA | 2026-09-25 | `docs/testing/bug-triage-2026-09-25.md` (0 bugs — nothing to triage) | 2026-09-25 03:00 |
 
 ---
 
@@ -139,6 +142,36 @@
 - [x] MEDIUM-001: Since the overstated "CC 12→~4" figure lives in the read-only synced Helix reference doc (not to be edited per `CLAUDE.md`'s Reference First rule), added a scoping clarification to this file's own RF-2 bullet instead — no code change needed since `validateGiftInput.ts` itself made no such claim ✅
 - [x] Full suite re-run: 145/145 passing, coverage 96.73% (unchanged), lint/typecheck clean ✅
 - [x] `docs/reviews/phase1-refactoring-code-review-v1.md` updated in place: top banner ✅ Resolved, per-issue Resolution blocks, appended Remediation Section, header Status updated to ✅ APPROVED ✅
+
+### QA Validation (Full — post Phase 1 Refactoring)
+
+**Owner**: AIRE_QA
+**Status**: ✅ Done
+**Started**: 2026-09-25
+**Completed**: 2026-09-25
+
+**Progress**:
+- [x] Scope confirmed with user: full implementation (not story-level), since the refactoring touched validation/rate-limiting/handler/page/form across multiple stories ✅
+- [x] Used existing `docs/testing/test-plan-full.md`; independently re-ran the full suite, coverage, lint, typecheck, build — 145/145 tests, coverage 96.73%/88.85%/92.39%/96.73%, all clean ✅
+- [x] Independently ran a **fresh** live E2E check (new build, new server on port 4123, `.env` physically moved aside and restored after) — confirmed health, valid request, new-relationship-value request, invalid relationship, unsupported field, rate-limit trip at request 11, CSP nonce match, and no `x-middleware-*` leak, all against the real running server ✅
+- [x] Grep-verified zero Claude/AI references and zero `budget` usage in the catalog matching code; confirmed catalog integrity (162 entries, 162 unique IDs) ✅
+- [x] Noted (not a bug): `test-plan-full.md`'s REQ-4/TC-001 text is stale from before Story 4.1 (still says 6 relationships / 150 entries) — logged as a documentation housekeeping recommendation ✅
+- [x] **Result: 🟢 PASS — READY FOR RELEASE** — `docs/testing/validation-report-full-2026-09-25.md` (0 bugs found; 20/20 requirements traced) ✅
+
+### QA Regression + Triage (post Phase 1 Refactoring)
+
+**Owner**: AIRE_QA
+**Status**: ✅ Done
+**Started**: 2026-09-25
+**Completed**: 2026-09-25
+
+**Progress**:
+- [x] Baseline auto-detected as "latest" (`docs/testing/validation-report-full-2026-09-25.md`, same-day) ✅
+- [x] Independently re-ran the full suite + coverage + lint + typecheck fresh rather than trusting the baseline's recorded numbers — identical: 145/145 tests, 96.73%/88.85%/92.39%/96.73% coverage, lint/typecheck clean ✅
+- [x] **Result: 🟢 NO REGRESSIONS** — `docs/testing/regression-report-2026-09-25.md` (0 new failures, 0 fixed, 0 flaky) ✅
+- [x] Triage run against both the validation and regression reports (source: "current") — both clean, 0 bugs to classify ✅
+- [x] Tracker push skipped (Project Tracking = Local, and there was nothing to push regardless) ✅
+- [x] **Result**: `docs/testing/bug-triage-2026-09-25.md` (0 bugs, 0 release blockers) ✅
 
 ### Documentation Reconciliation (Catalog Data Source)
 
@@ -447,6 +480,15 @@
 
 ## Completed Steps
 
+- [x] **QA Triage (post Phase 1 Refactoring)**: 0 bugs, 0 blockers — 2026-09-25
+  - Evidence: `docs/testing/bug-triage-2026-09-25.md`
+  - Sourced from the same-day validation + regression reports, both clean; nothing to classify or push to a tracker
+- [x] **QA Regression (post Phase 1 Refactoring, vs. same-day baseline)**: 🟢 NO REGRESSIONS — 2026-09-25
+  - Evidence: `docs/testing/regression-report-2026-09-25.md`
+  - 145/145 tests (unchanged), coverage unchanged (96.73%/88.85%/92.39%/96.73%), 0 new failures, 0 flaky tests
+- [x] **QA Validation (Full — post Phase 1 Refactoring)**: 🟢 PASS — READY FOR RELEASE — 2026-09-25
+  - Evidence: `docs/testing/validation-report-full-2026-09-25.md`
+  - 20/20 requirements traced with evidence; 145/145 automated tests + 8 independent live-server checks (health, valid/new-relationship/invalid-relationship/unsupported-field requests, rate-limit trip, CSP nonce match, no protocol-header leak) all passing; 0 bugs found; 1 documentation-only observation (stale relationship count in `test-plan-full.md`)
 - [x] **Phase 1 Refactoring Remediation**: Complete (2/2 findings: LOW-001, MEDIUM-001) — 2026-09-25
   - Evidence: `docs/reviews/phase1-refactoring-code-review-v1.md` (Remediation section + per-issue Resolution blocks)
   - Trailing newlines added to `route.ts`/`validateGiftInput.ts`; RF-2 complexity claim scoped correctly in `docs/status.md` (Helix reference doc itself left untouched, per Reference First rule). Tests: 145/145 passing (unaffected), coverage 96.73%, lint clean
