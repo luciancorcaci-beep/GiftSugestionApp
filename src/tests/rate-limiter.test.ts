@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ConcurrencyLimiter, FixedWindowRateLimiter } from '@/lib/rateLimiter';
+import { FixedWindowRateLimiter } from '@/lib/rateLimiter';
 
 describe('FixedWindowRateLimiter', () => {
   it('allows requests up to the limit within the current window', () => {
@@ -52,39 +52,5 @@ describe('FixedWindowRateLimiter', () => {
     const limiter = new FixedWindowRateLimiter(1, 10_000, () => 0);
 
     expect(limiter.retryAfterSeconds('unknown')).toBe(0);
-  });
-});
-
-describe('ConcurrencyLimiter', () => {
-  it('allows acquiring up to the configured maximum', () => {
-    const limiter = new ConcurrencyLimiter(2);
-
-    expect(limiter.tryAcquire()).toBe(true);
-    expect(limiter.tryAcquire()).toBe(true);
-  });
-
-  it('rejects acquisition once the maximum is in flight', () => {
-    const limiter = new ConcurrencyLimiter(1);
-
-    expect(limiter.tryAcquire()).toBe(true);
-    expect(limiter.tryAcquire()).toBe(false);
-  });
-
-  it('frees a slot on release', () => {
-    const limiter = new ConcurrencyLimiter(1);
-
-    limiter.tryAcquire();
-    limiter.release();
-
-    expect(limiter.tryAcquire()).toBe(true);
-  });
-
-  it('never goes negative when released without a matching acquire', () => {
-    const limiter = new ConcurrencyLimiter(1);
-
-    limiter.release();
-
-    expect(limiter.tryAcquire()).toBe(true);
-    expect(limiter.tryAcquire()).toBe(false);
   });
 });

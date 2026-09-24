@@ -2,7 +2,8 @@ import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
-import { GiftForm, getGiftFormError, submitGiftSuggestions } from '@/components/forms/GiftForm';
+import { GiftForm } from '@/components/forms/GiftForm';
+import { getGiftFormError, submitGiftSuggestions } from '@/application/services/giftSuggestionsService';
 import HomePage from '@/app/page';
 import { RELATIONSHIPS } from '@/domain/entities/GiftRecommendation';
 

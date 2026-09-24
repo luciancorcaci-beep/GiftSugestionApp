@@ -5,6 +5,7 @@ import { createGiftSuggestionsHandler } from '@/app/api/gift-suggestions/handler
 import { RecommendationService } from '@/domain/services/RecommendationService';
 import type { GiftRecommendation } from '@/domain/entities/GiftRecommendation';
 import type { GiftSuggestionRequest } from '@/application/dto/GiftSuggestionRequest';
+import { CatalogRecommendationProvider } from '@/infrastructure/catalog/CatalogRecommendationProvider';
 import { RecommendationProviderError } from '@/lib/errors';
 import { createLogger, type Logger } from '@/lib/logger';
 import { FixedWindowRateLimiter } from '@/lib/rateLimiter';
@@ -42,8 +43,9 @@ function providerReturning(value: unknown) {
 
 // Existing behavioral tests exercise the handler under a generous, dedicated rate-limiter
 // instance so they never contend with the module-level default limiter or each other.
-function createTestHandler(overrides: Parameters<typeof createGiftSuggestionsHandler>[0] = {}) {
+function createTestHandler(overrides: Partial<Parameters<typeof createGiftSuggestionsHandler>[0]> = {}) {
   return createGiftSuggestionsHandler({
+    provider: new CatalogRecommendationProvider(),
     rateLimiter: new FixedWindowRateLimiter(1_000, 60_000),
     ...overrides,
   });
@@ -58,16 +60,12 @@ describe('RecommendationService', () => {
     expect(provider.generate).toHaveBeenCalledWith({ ...validInput });
   });
 
-  it('rejects invalid input before invoking the provider', async () => {
-    const provider = providerReturning(recommendations());
-    const service = new RecommendationService(provider);
-
-    await expect(service.generate({ ...validInput, relationship: 'Coworker' })).rejects.toMatchObject({
-      code: 'VALIDATION_ERROR',
-      statusCode: 400,
-    });
-    expect(provider.generate).not.toHaveBeenCalled();
-  });
+  // Validation now happens exclusively at the application-layer boundary
+  // (parseGiftSuggestionRequest, called from the handler) — RecommendationService
+  // trusts the GiftSuggestionRequest it receives rather than re-validating it,
+  // closing the domain->application layer violation this service used to have.
+  // The equivalent "invalid input is rejected before the provider is called"
+  // behavior is covered end-to-end below, in 'POST /api/gift-suggestions'.
 
   it('maps provider failures without exposing raw details', async () => {
     const provider = providerReturning(Promise.reject(new RecommendationProviderError('api_key=super-secret')));

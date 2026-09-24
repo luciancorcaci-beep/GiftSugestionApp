@@ -1,3 +1,7 @@
+/** Shared user-facing fallback message — single source of truth so client and
+ * server code (and any error path with no more specific message) never drift. */
+export const UNABLE_TO_GENERATE_MESSAGE = 'Unable to generate gift suggestions right now.';
+
 export class AppError extends Error {
   constructor(
     message: string,
@@ -17,7 +21,7 @@ export class ValidationError extends AppError {
 }
 
 export class RecommendationServiceError extends AppError {
-  constructor(message = 'Unable to generate gift suggestions right now.', statusCode = 500) {
+  constructor(message = UNABLE_TO_GENERATE_MESSAGE, statusCode = 500) {
     super(message, statusCode, 'RECOMMENDATION_SERVICE_ERROR');
     this.name = 'RecommendationServiceError';
   }

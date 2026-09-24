@@ -2,18 +2,17 @@ import { randomUUID } from 'node:crypto';
 import { NextResponse } from 'next/server';
 
 import { parseGiftSuggestionRequest } from '@/app/api/gift-suggestions/schema';
-import { CatalogRecommendationProvider } from '@/infrastructure/catalog/CatalogRecommendationProvider';
 import { RecommendationService, type RecommendationProvider } from '@/domain/services/RecommendationService';
-import { FixedWindowRateLimiter } from '@/lib/rateLimiter';
+import { FixedWindowRateLimiter, type RateLimiter } from '@/lib/rateLimiter';
 import { readBoundedJson } from '@/lib/requestBody';
 import { TooManyRequestsError, toErrorResponse } from '@/lib/errors';
 import { logger as defaultLogger, type Logger } from '@/lib/logger';
 
 type GiftSuggestionsDependencies = {
-  provider?: RecommendationProvider;
+  provider: RecommendationProvider;
   logger?: Logger;
   createRequestId?: () => string;
-  rateLimiter?: FixedWindowRateLimiter;
+  rateLimiter?: RateLimiter;
   maxBodyBytes?: number;
   resolveClientKey?: (request: Request) => string;
 };
@@ -38,13 +37,17 @@ function defaultResolveClientKey(request: Request): string {
 }
 
 export function createGiftSuggestionsHandler({
-  provider = new CatalogRecommendationProvider(),
+  provider,
   logger = defaultLogger,
   createRequestId = randomUUID,
   rateLimiter = defaultRateLimiter,
   maxBodyBytes = MAX_BODY_BYTES,
   resolveClientKey = defaultResolveClientKey,
-}: GiftSuggestionsDependencies = {}) {
+}: GiftSuggestionsDependencies) {
+  // Built once per handler instance, not per request — the service is stateless,
+  // so there's no reason to pay allocation cost on every invocation.
+  const recommendationService = new RecommendationService(provider, logger);
+
   return async function handleGiftSuggestions(request: Request): Promise<Response> {
     const requestId = createRequestId();
     const clientKey = resolveClientKey(request);
@@ -59,7 +62,7 @@ export function createGiftSuggestionsHandler({
       const input = parseGiftSuggestionRequest(body);
       logger.info({ requestId, relationship: input.relationship, budget: input.budget }, 'Gift recommendations requested');
 
-      const recommendations = await new RecommendationService(provider, logger).generate(input);
+      const recommendations = await recommendationService.generate(input);
       logger.info({ requestId, count: recommendations.length }, 'Gift recommendations generated');
       return NextResponse.json({ recommendations }, { status: 200 });
     } catch (error) {

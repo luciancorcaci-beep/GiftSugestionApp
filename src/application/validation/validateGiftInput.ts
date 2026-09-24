@@ -76,6 +76,18 @@ function parseInterests(value: unknown): string {
   return interests;
 }
 
+/**
+ * Field -> parser table (Strategy pattern): each entry owns exactly one
+ * field's parsing/coercion/range-checking rule. Adding a new validated field
+ * means adding one entry here, not editing this function's body.
+ */
+const FIELD_PARSERS: { [K in keyof GiftSuggestionRequest]: (value: unknown) => GiftSuggestionRequest[K] } = {
+  recipientAge: parseAge,
+  budget: parseBudget,
+  relationship: parseRelationship,
+  interests: parseInterests,
+};
+
 export function validateGiftInput(input: unknown): GiftSuggestionRequest {
   if (!isRecord(input)) {
     throw new ValidationError('Gift input must be an object');
@@ -86,10 +98,9 @@ export function validateGiftInput(input: unknown): GiftSuggestionRequest {
     throw new ValidationError(`Unsupported field(s): ${unsupportedFields.join(', ')}`);
   }
 
-  return {
-    recipientAge: parseAge(input.recipientAge),
-    budget: parseBudget(input.budget),
-    relationship: parseRelationship(input.relationship),
-    interests: parseInterests(input.interests),
-  };
+  const result = {} as GiftSuggestionRequest;
+  for (const field of Object.keys(FIELD_PARSERS) as (keyof GiftSuggestionRequest)[]) {
+    (result[field] as unknown) = FIELD_PARSERS[field](input[field]);
+  }
+  return result;
 }

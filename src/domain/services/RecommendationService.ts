@@ -1,5 +1,4 @@
 import type { GiftSuggestionRequest } from '@/application/dto/GiftSuggestionRequest';
-import { validateGiftInput } from '@/application/validation/validateGiftInput';
 import type { GiftRecommendation } from '@/domain/entities/GiftRecommendation';
 import { RecommendationProviderError, RecommendationServiceError } from '@/lib/errors';
 import { logger as defaultLogger, type Logger } from '@/lib/logger';
@@ -45,9 +44,7 @@ export class RecommendationService {
     private readonly logger: Logger = defaultLogger,
   ) {}
 
-  async generate(input: unknown): Promise<GiftRecommendation[]> {
-    const request = validateGiftInput(input);
-
+  async generate(request: GiftSuggestionRequest): Promise<GiftRecommendation[]> {
     try {
       const output = await this.provider.generate(request);
       return validateProviderOutput(output);

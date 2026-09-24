@@ -5,7 +5,18 @@ type RateWindow = {
   windowStart: number;
 };
 
-export class FixedWindowRateLimiter {
+/**
+ * Abstraction over "can this key make a request right now". Lets callers
+ * (e.g. the gift-suggestions handler) depend on the contract rather than a
+ * concrete implementation, so swapping in a distributed limiter later is a
+ * drop-in change with no call-site edits.
+ */
+export interface RateLimiter {
+  tryAcquire(key: string): boolean;
+  retryAfterSeconds(key: string): number;
+}
+
+export class FixedWindowRateLimiter implements RateLimiter {
   private readonly windows = new Map<string, RateWindow>();
 
   constructor(
@@ -37,24 +48,5 @@ export class FixedWindowRateLimiter {
 
     const elapsed = this.now() - existing.windowStart;
     return Math.max(0, Math.ceil((this.windowMs - elapsed) / 1000));
-  }
-}
-
-export class ConcurrencyLimiter {
-  private inFlight = 0;
-
-  constructor(private readonly maxConcurrent: number) {}
-
-  tryAcquire(): boolean {
-    if (this.inFlight >= this.maxConcurrent) {
-      return false;
-    }
-
-    this.inFlight += 1;
-    return true;
-  }
-
-  release(): void {
-    this.inFlight = Math.max(0, this.inFlight - 1);
   }
 }

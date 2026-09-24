@@ -5,17 +5,10 @@ import React, { useState, type FormEvent } from 'react';
 import { Button } from '@/components/shared/Button';
 import { Input } from '@/components/shared/Input';
 import { Select } from '@/components/shared/Select';
-import { GiftResults, isGiftRecommendationResponse } from '@/components/results/GiftResults';
-import { RELATIONSHIPS, type GiftRecommendation, type GiftRecommendationResponse } from '@/domain/entities/GiftRecommendation';
-import { validateGiftInput } from '@/application/validation/validateGiftInput';
-import { ValidationError } from '@/lib/errors';
-
-export type GiftFormValues = {
-  age: string;
-  budget: string;
-  relationship: string;
-  interests: string;
-};
+import { GiftResults } from '@/components/results/GiftResults';
+import { RELATIONSHIPS, type GiftRecommendation } from '@/domain/entities/GiftRecommendation';
+import { getGiftFormError, submitGiftSuggestions, type GiftFormValues } from '@/application/services/giftSuggestionsService';
+import { UNABLE_TO_GENERATE_MESSAGE } from '@/lib/errors';
 
 const initialValues: GiftFormValues = {
   age: '',
@@ -23,49 +16,6 @@ const initialValues: GiftFormValues = {
   relationship: '',
   interests: '',
 };
-
-type SuggestionsFetcher = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
-
-function toRequest(values: GiftFormValues) {
-  return validateGiftInput({
-    recipientAge: values.age,
-    budget: values.budget,
-    relationship: values.relationship,
-    interests: values.interests,
-  });
-}
-
-export function getGiftFormError(values: GiftFormValues): string | undefined {
-  try {
-    toRequest(values);
-    return undefined;
-  } catch (error) {
-    return error instanceof ValidationError ? error.message : 'Please check the highlighted fields.';
-  }
-}
-
-export async function submitGiftSuggestions(
-  values: GiftFormValues,
-  fetchSuggestions: SuggestionsFetcher = globalThis.fetch,
-): Promise<GiftRecommendationResponse> {
-  const request = toRequest(values);
-  const response = await fetchSuggestions('/api/gift-suggestions', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(request),
-  });
-
-  if (!response.ok) {
-    throw new Error('Unable to generate gift suggestions right now.');
-  }
-
-  const payload: unknown = await response.json();
-  if (!isGiftRecommendationResponse(payload)) {
-    throw new Error('No gift suggestions are available yet.');
-  }
-
-  return payload;
-}
 
 export function GiftForm() {
   const [values, setValues] = useState<GiftFormValues>(initialValues);
@@ -97,7 +47,7 @@ export function GiftForm() {
       const result = await submitGiftSuggestions(values);
       setRecommendations(result.recommendations);
     } catch (requestError) {
-      setError(requestError instanceof Error ? requestError.message : 'Unable to generate gift suggestions right now.');
+      setError(requestError instanceof Error ? requestError.message : UNABLE_TO_GENERATE_MESSAGE);
     } finally {
       setIsLoading(false);
     }

@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-09-23 08:00
-**Updated By**: DEVOPS
+**Last Updated**: 2026-09-25 01:00
+**Updated By**: DEV
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -20,8 +20,8 @@
 
 | Step | Status | Owner | Updated | Evidence | Recorded |
 |------|--------|-------|---------|----------|----------|
-| System Discovery | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/current/00-system-overview.md` | 2026-09-22 00:00 |
-| Deep-Dive | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/current/01-full-system-deep-dive.md` | 2026-09-22 01:00 |
+| System Discovery | ✅ Done | AIRE_ARCHITECT | 2026-09-24 | `docs/architecture/current/00-system-overview.md` (Confirmed; redone from scratch twice, zero drift both times) | 2026-09-24 02:00 |
+| Deep-Dive | ✅ Done | AIRE_ARCHITECT | 2026-09-24 | `docs/architecture/current/01-full-system-deep-dive.md` (Confirmed; redone from scratch, identical findings — no drift) | 2026-09-24 01:00 |
 | Requirements | ✅ Done | AIRE_ARCHITECT | 2026-09-23 | `docs/requirements.md` v1.2 (reconciled: catalog data changed after all, via user-supplied `Gift_Ideas_Database-V1.xlsx`) | 2026-09-23 04:00 |
 | Target Architecture | ✅ Done | AIRE_ARCHITECT | 2026-09-23 | `docs/architecture/design/02-target-architecture-brownfield.md` v1.1 (reconciliation note added — "no catalog changes" decision superseded, struck through and explained, not deleted) | 2026-09-23 04:00 |
 | Patterns | ✅ Done | AIRE_ARCHITECT | 2026-09-22 | `docs/architecture/design/03-patterns-and-standards-brownfield.md` | 2026-09-22 04:00 |
@@ -39,8 +39,9 @@
 | Epic 3: Curated Gift Catalog | ✅ Done | AIRE_DEV | 2026-09-18 | 3/3 stories done | 2026-09-18 00:00 |
 | Epic 4: Expanded Relationship Options | ✅ Done | AIRE_DEV | 2026-09-23 | 1/1 stories done | 2026-09-23 00:00 |
 | DevOps Discovery | ✅ Done | DEVOPS | 2026-09-23 | `docs/deployment/discovery-report.md` (Vercel target confirmed; reconfirmed accurate post-Epic-4, no changes) | 2026-09-23 08:00 |
-| DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-18 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` | 2026-09-18 00:00 |
+| DevOps Pipeline | ✅ Done | DEVOPS | 2026-09-23 | `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml` (reconfirmed valid + accurate post-Epic-4, no changes needed) | 2026-09-23 09:00 |
 | DevOps Deploy | ✅ Done | DEVOPS | 2026-09-18 | `docs/deployment/deployment-plan.md`, `runbook-deploy.md`, `runbook-rollback.md`, `runbook-troubleshoot.md`, `architecture.md`, `quick-reference.md` (Vercel-scoped; server/Terraform/SSL phases skipped as inapplicable) | 2026-09-18 00:00 |
+| Review (Phase 1 Refactoring) | ✅ Done | AIRE_REVIEWER | 2026-09-25 | `docs/reviews/phase1-refactoring-code-review-v1.md` (✅ APPROVED — 2 comments remediated) | 2026-09-25 01:00 |
 
 ---
 
@@ -88,6 +89,56 @@
 - [x] 8 requirements traced (from `docs/requirements.md` v1.2 + the story's AC), 14 test scenarios designed (unit, integration, and live E2E) ✅
 - [x] Test data, coverage goals, and project-specific quality gates defined (no duplicate relationship list; original 150 catalog entries unmodified) ✅
 - [x] `docs/testing/test-plan-story-4.1.md` created ✅
+
+### Refactoring — Helix Tech Debt / Refactoring Strategy Phase 1 Quick Wins
+
+**Owner**: AIRE_DEV
+**Status**: ✅ Done
+**Started**: 2026-09-24
+**Completed**: 2026-09-24
+
+**Progress**: Implemented the 8 items scoped as "Phase 1 quick wins" from the two synced Helix documents (`docs/helix/documents/tech-debt-assessment-giftsugestionapp.md`, `refactoring-strategy-giftsugestionapp.md`), in 5 tested batches — code-only, no new dependencies, no external services:
+- [x] **RF-3/AR-1/CQ-2** — Removed the domain→application layer violation: `RecommendationService.generate()` no longer imports/calls `validateGiftInput`; it now trusts the `GiftSuggestionRequest` the application-layer boundary already validated. Also eliminates the double-validation. The one test that directly exercised domain-level validation was replaced with a comment pointing to its equivalent handler-level coverage (already existed) ✅
+- [x] **Pattern 4** — Extracted a `RateLimiter` interface (`tryAcquire`/`retryAfterSeconds`) in `src/lib/rateLimiter.ts`; `FixedWindowRateLimiter implements` it; the handler now types its dependency as the interface, not the concrete class ✅
+- [x] **RF-4/AR-3/CQ-4** — `handler.ts` no longer imports or defaults to a concrete `CatalogRecommendationProvider`; `provider` is now a required dependency supplied by the composition root (`route.ts`, per Pattern 2). `RecommendationService` is now constructed once per handler instance (hoisted into the factory closure) instead of per request ✅
+- [x] **RF-5/AR-4** — Extracted `checkHealth`/`isHealthyPayload`/`HealthStatus`/`HEALTH_CHECK_TIMEOUT_MS` from `page.tsx` into `src/lib/healthClient.ts`, and the polling `useEffect`/`useState` into a new `src/hooks/useHealthCheck.ts` hook. `page.tsx` dropped from 93 to 38 lines of pure UI; the `HomePage.checkHealth` test-injection contract was preserved exactly ✅
+- [x] **RF-1/CQ-1** — Extracted `submitGiftSuggestions`, `getGiftFormError`, and `GiftFormValues` from `GiftForm.tsx` into a new `src/application/services/giftSuggestionsService.ts`. `GiftForm.tsx` dropped from 171 to ~111 lines of pure UI/state; test imports updated to the new ownership ✅
+- [x] **CQ-3** — Centralized the duplicated `'Unable to generate gift suggestions right now.'` string into `UNABLE_TO_GENERATE_MESSAGE`, exported from `src/lib/errors.ts`; used by `RecommendationServiceError`'s default message, the new application service, and `GiftForm.tsx`'s fallback ✅
+- [x] **RF-2/Pattern 1** — Refactored `validateGiftInput.ts` into a declarative `FIELD_PARSERS` field→parser table with a single dispatch loop, replacing the hand-written object-literal construction — adding a new validated field is now one table entry. Individual field parsing/coercion logic (`parseAge`, `parseBudget`, etc.) kept intact and unchanged, since each genuinely has distinct rules. Note: the source Helix doc's "CC 12→~4" figure describes only this orchestration function; the four per-field parsers retain their own branching, so the module's aggregate complexity is redistributed into smaller, single-concern functions rather than reduced by that specific ratio (flagged as MEDIUM-001 in `docs/reviews/phase1-refactoring-code-review-v1.md`, resolved 2026-09-25 by this clarification) ✅
+- [x] **TST-3** — Verified (did not duplicate): `gift-suggestions-api.test.ts`'s existing `'RecommendationService'` describe block already provides substantial dedicated coverage (happy path, `RecommendationProviderError` wrapping, `RecommendationServiceError` re-throw, malformed output, log-leak safety, product-URL trust filtering) — the Helix report's claim of "no dedicated unit test" doesn't fully hold under verification; updated that suite for the RF-3 contract change instead of creating a redundant new file ✅
+
+**Verification after every batch** (not just at the end): typecheck, full suite, lint — all green after each of the 5 batches. Final state: 145/145 tests passing, coverage improved 96.43% → **96.73%**, lint/typecheck/build clean, and a live `next build && next start` smoke test (health check, valid request, invalid-relationship rejection) confirmed on a real running server.
+
+**Explicitly deferred** (flagged to user as needing separate scoping, not attempted): DEP-1/2/3 (Next.js 13→15, Vitest 0.34→3.x, React 18→19 — major version bumps), AR-2/INF-1 (distributed rate limiter — needs Upstash/Vercel KV account), INF-2 (Sentry APM — needs external account), INF-3 (staging environment — manual Vercel dashboard config), INF-5 (custom domain — DNS, always manual per the DevOps rulebook), TST-1 (Playwright E2E — new dependency + staging prerequisite), CQ-5 (project rename — high blast radius, explicitly "not urgent" in the source doc), AR-5 (`src/lib/` reorg — broader file-move, "Can Wait" bucket), DOC-1/2/3/4/5/6 (README, CONTRIBUTING, ADRs, OpenAPI, CHANGELOG, JSDoc — user chose "quick wins only", not "quick wins + docs").
+
+### Review (Phase 1 Refactoring)
+
+**Owner**: AIRE_REVIEWER
+**Status**: ✅ Done
+**Started**: 2026-09-25
+**Completed**: 2026-09-25
+
+**Progress**:
+- [x] INITIAL_REVIEW mode (no prior review existed for this scope) ✅
+- [x] Independently re-read every diff (7 touched/new production files + 3 test files) rather than trusting the implementer's self-report ✅
+- [x] Independently re-ran the full suite, coverage gate, lint, typecheck, and build fresh — 145/145 tests, 96.73% statements/96.73% lines/88.85% branches/92.39% functions, all clean ✅
+- [x] Cross-referenced `docs/architecture/design/03-patterns-and-standards-brownfield.md` for pattern adherence — no conflicts ✅
+- [x] Found LOW-001 🟢 (missing trailing newline in 2 files) and MEDIUM-001 🟡 (RF-2's "CC 12→~4" comment overstates the reduction — only the orchestrator simplified; per-field parsers retain their own branching) — both non-blocking ✅
+- [x] **Result: ⚠️ APPROVED WITH COMMENTS** — `docs/reviews/phase1-refactoring-code-review-v1.md` ✅
+
+### Remediation (Phase 1 Refactoring code review)
+
+**Owner**: AIRE_DEV
+**Status**: ✅ Done
+**Started**: 2026-09-25
+**Completed**: 2026-09-25
+
+**Progress**:
+- [x] Remediation plan: both non-blocking findings in scope (no 🔴/🟠 existed) — LOW-001 🟢 and MEDIUM-001 🟡 ✅
+- [x] LOW-001: Appended trailing newline to `route.ts` and `validateGiftInput.ts` ✅
+- [x] MEDIUM-001: Since the overstated "CC 12→~4" figure lives in the read-only synced Helix reference doc (not to be edited per `CLAUDE.md`'s Reference First rule), added a scoping clarification to this file's own RF-2 bullet instead — no code change needed since `validateGiftInput.ts` itself made no such claim ✅
+- [x] Full suite re-run: 145/145 passing, coverage 96.73% (unchanged), lint/typecheck clean ✅
+- [x] `docs/reviews/phase1-refactoring-code-review-v1.md` updated in place: top banner ✅ Resolved, per-issue Resolution blocks, appended Remediation Section, header Status updated to ✅ APPROVED ✅
 
 ### Documentation Reconciliation (Catalog Data Source)
 
@@ -377,7 +428,7 @@
 |--------|--------|---------|--------|----------|
 | Unit Test Coverage | ≥85% | 96.48% (full suite) | ✅ | 2026-09-23 01:00 |
 | Integration Tests | 100% pass | 16/16 test files, 150/150 tests | ✅ | 2026-09-23 01:00 |
-| Code Review | All stories | 10/10 stories reviewed; story 3.1, 3.3, and 4.1 all remediated (all findings resolved) | ✅ | 2026-09-23 03:00 |
+| Code Review | All stories | 10/10 stories reviewed; story 3.1, 3.3, 4.1, and Phase 1 refactoring all remediated (all findings resolved) | ✅ | 2026-09-25 01:00 |
 | Documentation | All stories | 11/11 | ✅ | 2026-09-23 01:00 |
 
 ---
@@ -396,6 +447,12 @@
 
 ## Completed Steps
 
+- [x] **Phase 1 Refactoring Remediation**: Complete (2/2 findings: LOW-001, MEDIUM-001) — 2026-09-25
+  - Evidence: `docs/reviews/phase1-refactoring-code-review-v1.md` (Remediation section + per-issue Resolution blocks)
+  - Trailing newlines added to `route.ts`/`validateGiftInput.ts`; RF-2 complexity claim scoped correctly in `docs/status.md` (Helix reference doc itself left untouched, per Reference First rule). Tests: 145/145 passing (unaffected), coverage 96.73%, lint clean
+- [x] **Phase 1 Refactoring Code Review**: ⚠️ APPROVED WITH COMMENTS (both comments since remediated → ✅ APPROVED) — 2026-09-25
+  - Evidence: `docs/reviews/phase1-refactoring-code-review-v1.md`
+  - Independently re-verified 145/145 tests, coverage 96.73% stmts / 88.85% branches / 92.39% funcs, lint/typecheck/build clean; LOW-001 🟢 (missing trailing newline, 2 files) and MEDIUM-001 🟡 (RF-2 code comment overstates its complexity-reduction claim) — both non-blocking, 0 blockers, 0 high
 - [x] **QA Regression (vs. 2026-09-18 baseline)**: 🟢 NO REGRESSIONS — 2026-09-23
   - Evidence: `docs/testing/regression-report-2026-09-23.md`
   - 128→150 tests (+22), coverage held/improved (96.47%→96.48%), zero new failures, every baseline requirement re-verified unaffected
@@ -405,6 +462,9 @@
 - [x] **QA Test Plan (Story 4.1)**: Created — 2026-09-23
   - Evidence: `docs/testing/test-plan-story-4.1.md`
   - 14 scenarios across 8 traced requirements, covering the relationship widening, regression of the original 6, and the mid-implementation catalog data-source change
+- [x] **Refactoring**: Helix Tech Debt / Refactoring Strategy Phase 1 quick wins — 2026-09-24
+  - Evidence: 5 tested batches touching `RecommendationService.ts`, `rateLimiter.ts`, `handler.ts`, `route.ts`, `page.tsx` (+ new `healthClient.ts`, `useHealthCheck.ts`), `GiftForm.tsx` (+ new `giftSuggestionsService.ts`), `errors.ts`, `validateGiftInput.ts`
+  - 145/145 tests passing, coverage 96.43%→96.73%, lint/typecheck/build clean, live server smoke test passed; 8 items implemented, 1 (TST-3) found already substantially covered; remaining ~22 debt/refactor items explicitly deferred with reasons (major version bumps, external services, or out of the approved scope)
 - [x] **Documentation Reconciliation**: Catalog data source — 2026-09-23
   - Evidence: `docs/requirements.md` (v1.2), `docs/architecture/design/02-target-architecture-brownfield.md` (v1.1), `docs/architecture/current/00-system-overview.md`, `docs/architecture/current/01-full-system-deep-dive.md`, both diagram-preview files
   - All "150 entries" / "no catalog changes" statements corrected; decision-record docs use strikethrough + superseded notes (history preserved), current-state snapshots updated directly
@@ -555,9 +615,9 @@
 2. **🔴 Security follow-up (tracked, not blocking)**: Upgrade `next` 13.5.11 → 16.x to resolve multiple known high/critical CVEs (unauthenticated RCE, SSRF, cache poisoning, auth bypass) found during pipeline setup. This is a dedicated upgrade project — App Router/middleware compatibility review, full re-test of all 128 tests plus the CSP-nonce/middleware work from Epic 1-2 — not a routine dependency bump. `dependency-audit` CI job is currently `continue-on-error: true` pending this.
 3. **Architecture decision**: Raise NEW-002's remaining serverless-state gap (in-memory rate limiter vs. Vercel's serverless model) with ARCHITECT/PRODUCT_OWNER — not a DEV code-fix item; the rate limiter survived Epic 3 unchanged (only the concurrency limiter/timeout retired with the AI adapter). This is now directly relevant since Vercel is the confirmed deployment target.
 4. **Reconcile stale design doc**: `docs/architecture/design/00-system-architecture-greenfield.md` describes a Claude-AI-based engine that no longer exists in code — mark it superseded or update it to match `docs/architecture/current/00-system-overview.md`.
-5. **Remove or repurpose dead code**: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites (leftover from the retired AI-provider adapter).
+5. ~~**Remove or repurpose dead code**: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites~~ — **Done 2026-09-24**, removed along with its dedicated test block.
 6. **Commit and push Story 4.1**: the entire implementation (code + docs) is still uncommitted in git — flagged as a process note in QA's validation report. Nothing here can ship until it's committed.
-7. Still open (pre-existing, unrelated to Epic 4): the `next@13.5.11` CVE upgrade (see Blockers) and `ConcurrencyLimiter` dead-code cleanup in `src/lib/rateLimiter.ts`.
+7. Still open (pre-existing, unrelated to Epic 4): the `next@13.5.11` CVE upgrade (see Blockers) — tracked as its own dedicated upgrade project, not a quick fix.
 
 ---
 
@@ -603,4 +663,12 @@
 | QA | Full validation complete (Story 4.1) — PASS, 0 bugs found | Idle | 2026-09-23 | 2026-09-23 06:00 |
 | QA | Regression vs. 2026-09-18 baseline complete — 0 regressions, release path clear | Idle | 2026-09-23 | 2026-09-23 07:00 |
 | DEVOPS | Reconfirmed discovery-report.md still accurate post-Epic-4 — no new deps/env vars/secrets, no re-discovery needed | Idle | 2026-09-23 | 2026-09-23 08:00 |
+| DEVOPS | Reconfirmed CI pipeline (ci.yml, codeql.yml, dependabot.yml) valid and still covers everything — no changes needed | Idle | 2026-09-23 | 2026-09-23 09:00 |
+| ARCHITECT | Reconfirmed 00-system-overview.md still accurate — no app code changes since e201ccc, no re-inspection needed | Idle | 2026-09-24 | 2026-09-24 00:00 |
+| ARCHITECT | Redid full-system deep-dive from scratch (user request) — every file independently re-verified, zero drift found | Idle | 2026-09-24 | 2026-09-24 01:00 |
+| ARCHITECT | Redid system discovery from scratch a second time (user request) — root structure, package.json, .env.example re-scanned, zero drift found | Idle | 2026-09-24 | 2026-09-24 02:00 |
+| DEV | Dead-code cleanup: removed `ConcurrencyLimiter` (rateLimiter.ts + its tests) — 146/146 tests, coverage 96.43%, lint/typecheck/build clean. Attempted removing 10 "unused" `React` imports; reverted after it broke 19 tests (vitest's JSX transform here is classic-runtime, so `React` must stay in scope — false positive, not actually dead) | Idle | 2026-09-24 | 2026-09-24 03:00 |
+| ARCHITECT | Targeted update to 00-system-overview.md/01-full-system-deep-dive.md — marked ConcurrencyLimiter finding resolved (removed), no full re-scan needed since it was the only change | Idle | 2026-09-24 | 2026-09-24 04:00 |
+| ARCHITECT | Helix sync — pulled 2 new solution documents (Tech Debt Assessment, Refactoring Strategy, both generated 2026-09-24 by Helix's Modernization Platform) into docs/helix/documents/; refreshed session context and manifest | Idle | 2026-09-24 | 2026-09-24 05:00 |
+| DEV | Implemented 8 Phase-1 quick-win items from the Helix Tech Debt/Refactoring docs (RF-1 through RF-5, Pattern 4, CQ-3, TST-3 verified) — 145/145 tests, coverage 96.73%, lint/typecheck/build clean, live smoke test passed | Idle | 2026-09-24 | 2026-09-24 06:00 |
 
