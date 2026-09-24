@@ -1,7 +1,7 @@
 # Project Status
 
-**Last Updated**: 2026-09-25 03:00
-**Updated By**: QA
+**Last Updated**: 2026-09-25 04:00
+**Updated By**: DEV
 **Overall Status**: 🟢 ON TRACK
 
 ---
@@ -443,7 +443,7 @@
 
 | Enhancement | Story ID | Title | Related-Story | Tracker | Start | End | Recorded |
 |-------------|----------|-------|---------------|---------|-------|-----|----------|
-| — | — | — | — | LOCAL | — | — | 2026-09-16 00:00 |
+| ENHANCEMENT-1 | 1.2a | Deepen the page background to a warmer cream tone | 1.2 | LOCAL | 2026-09-25 | 2026-09-25 | 2026-09-25 04:00 |
 
 ---
 
@@ -480,6 +480,9 @@
 
 ## Completed Steps
 
+- [x] **Enhancement 1 / Story 1.2a**: Deepen the page background to a warmer cream tone — 2026-09-25
+  - Evidence: `docs/enhancements/enhancement-1.md`, `docs/plans/stories/enhancement-epic-1-story-1.2a-deepen-page-background-cream-tone.md`
+  - `--surface` in `src/app/globals.css` changed from `#fffbf5` to `#faf0dc` (single-line CSS change, its only consumer). Tests: 145/145 passing (unaffected — no test surface for a CSS custom-property value), coverage 96.73% (unchanged), lint/typecheck/build clean. Live-verified: compiled CSS output confirmed shipping `--surface:#faf0dc`. Tracker: LOCAL (GitHub push requested but `gh` CLI unavailable in this environment; user chose local-only for now)
 - [x] **QA Triage (post Phase 1 Refactoring)**: 0 bugs, 0 blockers — 2026-09-25
   - Evidence: `docs/testing/bug-triage-2026-09-25.md`
   - Sourced from the same-day validation + regression reports, both clean; nothing to classify or push to a tracker
@@ -660,6 +663,7 @@
 5. ~~**Remove or repurpose dead code**: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites~~ — **Done 2026-09-24**, removed along with its dedicated test block.
 6. **Commit and push Story 4.1**: the entire implementation (code + docs) is still uncommitted in git — flagged as a process note in QA's validation report. Nothing here can ship until it's committed.
 7. Still open (pre-existing, unrelated to Epic 4): the `next@13.5.11` CVE upgrade (see Blockers) — tracked as its own dedicated upgrade project, not a quick fix.
+8. **Push ENHANCEMENT-1 / Story 1.2a to GitHub as an Issue**: user asked for this during the enhancement workflow, but `gh` CLI isn't installed and no `GITHUB_TOKEN`/`GH_TOKEN` is available in this environment, so it couldn't be done. User chose local-only tracking for now (see Story 1.2a frontmatter: `GitHub: LOCAL`). Revisit if `gh` gets installed/authenticated or a token is provided.
 
 ---
 
@@ -713,4 +717,12 @@
 | ARCHITECT | Targeted update to 00-system-overview.md/01-full-system-deep-dive.md — marked ConcurrencyLimiter finding resolved (removed), no full re-scan needed since it was the only change | Idle | 2026-09-24 | 2026-09-24 04:00 |
 | ARCHITECT | Helix sync — pulled 2 new solution documents (Tech Debt Assessment, Refactoring Strategy, both generated 2026-09-24 by Helix's Modernization Platform) into docs/helix/documents/; refreshed session context and manifest | Idle | 2026-09-24 | 2026-09-24 05:00 |
 | DEV | Implemented 8 Phase-1 quick-win items from the Helix Tech Debt/Refactoring docs (RF-1 through RF-5, Pattern 4, CQ-3, TST-3 verified) — 145/145 tests, coverage 96.73%, lint/typecheck/build clean, live smoke test passed | Idle | 2026-09-24 | 2026-09-24 06:00 |
+| REVIEWER | Reviewed Phase 1 refactoring; APPROVED WITH COMMENTS (LOW-001 🟢, MEDIUM-001 🟡) | Idle | 2026-09-25 | 2026-09-25 00:00 |
+| DEV | Remediated phase1-refactoring-code-review-v1.md (both findings resolved) — report now ✅ APPROVED | Idle | 2026-09-25 | 2026-09-25 01:00 |
+| QA | Full validation complete (post Phase 1 Refactoring) — PASS, 0 bugs found, 20/20 requirements traced | Idle | 2026-09-25 | 2026-09-25 02:00 |
+| QA | Regression + triage complete — 0 regressions, 0 bugs to triage, release path clear | Idle | 2026-09-25 | 2026-09-25 03:00 |
+| ANALYST_PM_BROWNFIELD | Enhancement intake — ENHANCEMENT-1 (deepen page background) captured and approved at GATE #1 | Idle | 2026-09-25 | 2026-09-25 04:00 |
+| ARCHITECT | Codebase Impact Scan for ENHANCEMENT-1 — single-file change (`globals.css`), linked to Story 1.2 as sub-story 1.2a | Idle | 2026-09-25 | 2026-09-25 04:00 |
+| PRODUCT_OWNER | Authored and approved Story 1.2a at GATE #2; tracker push attempted (gh CLI unavailable) — set to LOCAL per user choice | Idle | 2026-09-25 | 2026-09-25 04:00 |
+| DEV | Story 1.2a complete — `--surface` changed to `#faf0dc`; 145/145 tests (unaffected), lint/typecheck/build clean, compiled-CSS verified live; approved at GATE #3 | Idle | 2026-09-25 | 2026-09-25 04:00 |
 
