@@ -1,6 +1,6 @@
 # Project Status
 
-**Last Updated**: 2026-09-25 04:00
+**Last Updated**: 2026-09-25 05:00
 **Updated By**: DEV
 **Overall Status**: 🟢 ON TRACK
 
@@ -444,6 +444,7 @@
 | Enhancement | Story ID | Title | Related-Story | Tracker | Start | End | Recorded |
 |-------------|----------|-------|---------------|---------|-------|-----|----------|
 | ENHANCEMENT-1 | 1.2a | Deepen the page background to a warmer cream tone | 1.2 | LOCAL | 2026-09-25 | 2026-09-25 | 2026-09-25 04:00 |
+| ENHANCEMENT-2 | 1.2b | Change the page background to a pleasant light blue | 1.2 | LOCAL | 2026-09-25 | 2026-09-25 | 2026-09-25 05:00 |
 
 ---
 
@@ -480,6 +481,9 @@
 
 ## Completed Steps
 
+- [x] **Enhancement 2 / Story 1.2b**: Change the page background to a pleasant light blue — 2026-09-25
+  - Evidence: `docs/enhancements/enhancement-2.md`, `docs/plans/stories/enhancement-epic-1-story-1.2b-light-blue-page-background.md`
+  - `--surface` in `src/app/globals.css` changed from `#faf0dc` (Enhancement 1) to `#e0f2fe` (single-line CSS change, its only consumer). Tests: 145/145 passing (unaffected), coverage 96.73% (unchanged), lint/typecheck/build clean. Live-verified: compiled CSS output confirmed shipping `--surface:#e0f2fe`. Tracker: LOCAL (GitHub push requested but `gh` CLI still unavailable; user chose local-only again)
 - [x] **Enhancement 1 / Story 1.2a**: Deepen the page background to a warmer cream tone — 2026-09-25
   - Evidence: `docs/enhancements/enhancement-1.md`, `docs/plans/stories/enhancement-epic-1-story-1.2a-deepen-page-background-cream-tone.md`
   - `--surface` in `src/app/globals.css` changed from `#fffbf5` to `#faf0dc` (single-line CSS change, its only consumer). Tests: 145/145 passing (unaffected — no test surface for a CSS custom-property value), coverage 96.73% (unchanged), lint/typecheck/build clean. Live-verified: compiled CSS output confirmed shipping `--surface:#faf0dc`. Tracker: LOCAL (GitHub push requested but `gh` CLI unavailable in this environment; user chose local-only for now)
@@ -663,7 +667,7 @@
 5. ~~**Remove or repurpose dead code**: `ConcurrencyLimiter` in `src/lib/rateLimiter.ts` has no call sites~~ — **Done 2026-09-24**, removed along with its dedicated test block.
 6. **Commit and push Story 4.1**: the entire implementation (code + docs) is still uncommitted in git — flagged as a process note in QA's validation report. Nothing here can ship until it's committed.
 7. Still open (pre-existing, unrelated to Epic 4): the `next@13.5.11` CVE upgrade (see Blockers) — tracked as its own dedicated upgrade project, not a quick fix.
-8. **Push ENHANCEMENT-1 / Story 1.2a to GitHub as an Issue**: user asked for this during the enhancement workflow, but `gh` CLI isn't installed and no `GITHUB_TOKEN`/`GH_TOKEN` is available in this environment, so it couldn't be done. User chose local-only tracking for now (see Story 1.2a frontmatter: `GitHub: LOCAL`). Revisit if `gh` gets installed/authenticated or a token is provided.
+8. **Push ENHANCEMENT-1 / Story 1.2a and ENHANCEMENT-2 / Story 1.2b to GitHub as Issues**: user asked for this during both enhancement workflows, but `gh` CLI isn't installed and no `GITHUB_TOKEN`/`GH_TOKEN` is available in this environment, so neither could be done. User chose local-only tracking both times (see Story 1.2a/1.2b frontmatter: `GitHub: LOCAL`). Revisit if `gh` gets installed/authenticated or a token is provided.
 
 ---
 
@@ -725,4 +729,8 @@
 | ARCHITECT | Codebase Impact Scan for ENHANCEMENT-1 — single-file change (`globals.css`), linked to Story 1.2 as sub-story 1.2a | Idle | 2026-09-25 | 2026-09-25 04:00 |
 | PRODUCT_OWNER | Authored and approved Story 1.2a at GATE #2; tracker push attempted (gh CLI unavailable) — set to LOCAL per user choice | Idle | 2026-09-25 | 2026-09-25 04:00 |
 | DEV | Story 1.2a complete — `--surface` changed to `#faf0dc`; 145/145 tests (unaffected), lint/typecheck/build clean, compiled-CSS verified live; approved at GATE #3 | Idle | 2026-09-25 | 2026-09-25 04:00 |
+| ANALYST_PM_BROWNFIELD | Enhancement intake — ENHANCEMENT-2 (light blue page background) captured and approved at GATE #1 | Idle | 2026-09-25 | 2026-09-25 05:00 |
+| ARCHITECT | Codebase Impact Scan for ENHANCEMENT-2 — single-file change (`globals.css`), linked to Story 1.2 as sub-story 1.2b (1.2a already taken by Enhancement 1) | Idle | 2026-09-25 | 2026-09-25 05:00 |
+| PRODUCT_OWNER | Authored and approved Story 1.2b at GATE #2; tracker push attempted (gh CLI still unavailable) — set to LOCAL per user choice | Idle | 2026-09-25 | 2026-09-25 05:00 |
+| DEV | Story 1.2b complete — `--surface` changed to `#e0f2fe`; 145/145 tests (unaffected), lint/typecheck/build clean, compiled-CSS verified live; approved at GATE #3 | Idle | 2026-09-25 | 2026-09-25 05:00 |
 
